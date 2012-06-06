@@ -11,24 +11,35 @@ BEGIN{
 
   ORS = "";
 
-  # For GET;  
-  split(ENVIRON["QUERY_STRING"],query,"&");
+  # test for phylomatic in path
+  RS = "\n";
+  "which phylomatic" | getline whichpm;
+  if ( whichpm ~ /phylomatic/) PM = "phylomatic" ;
+  else PM = "./phylomatic" ; # need symlink in same dir
+
+  # GET or POST?
+  # test with curl -d "a=b" [-G] <URL>
+  RS = "\x04";
+  if (ENVIRON["QUERY_STRING"])
+	{
+	  IN = ENVIRON["QUERY_STRING"] ;
+	}
+  else getline IN;
+
+  # parse
+  split( IN, query, "&" );
   for (i in query)
 	{
 	  split(query[i],tmpquery,"=");
 	  f[tmpquery[1]] = decode(substr(tmpquery[2], 1, 5000)); 
 	}
-  
 
-  # test for phylomatic in path
-  RS = "\n";
-  "which phylomatic" | getline app;
-  if (app !~ /phylomatic/)  { PM = "~/bin/phylomatic" } 
-  else {PM = "phylomatic"}
-  
   print "Content-type: text/plain\n\n";
   
-  system(PM " -h");
+  for( i in f )
+	{
+	  print i " = " f[i] "\n" ;
+	}
 
   exit;
 }
