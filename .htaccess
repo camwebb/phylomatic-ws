@@ -1,0 +1,5 @@
+Options +ExecCGI -Indexes
+
+<Files pmws>
+  SetHandler cgi-script
+</Files>
