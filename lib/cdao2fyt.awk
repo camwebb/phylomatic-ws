@@ -1,30 +1,44 @@
-function cdao2fyt( INFILE )
+function cdao2fyt( n3  )
 {
 
-  # Read CDAO triples
-  while ((getline < INFILE) > 0)
+  # split into rows
+  nrow = split(n3, row, "\n") ;
+  for (r = 1 ; r < nrow ; r++)
 	{
-	  if ($2 == "<http://www.evolutionaryontology.org/cdao.owl#has_Ancestor>")
+	  ncol = patsplit(row[r], c, "([^\ ]+)|(\"[^\"]+\")" ) ;
+
+	  # has_Parent
+	  if (c[2] == "<http://purl.obolibrary.org/obo/CDAO_0000179>")
 		{
-		  parent[$1] = $3;
+		  parent[c[1]] = c[3];
 		}
-	  else if ($2 == "<http://www.evolutionaryontology.org/cdao.owl#has_Child_Node>")
+	  #  belongs_to_Edge_as_Child
+	  else if (c[2] == "<http://purl.obolibrary.org/obo/CDAO_0000143>")
 		{
-		  parentEdge[$3] = $1;
+		  parentEdge[c[1]] = c[3];
 		}
-	  else if ($2 == "<http://www.evolutionaryontology.org/cdao.owl#has_Annotation>")
+	  # has_Annotation
+	  else if (c[2] == "<http://purl.obolibrary.org/obo/CDAO_0000193>")
 		{
-		  annotation[$1] = $3;
-		}  
-	  else if ($2 == "<http://www.evolutionaryontology.org/cdao.owl#has_Float_Value>")
-		{
-		  annotationEdgeLength[$1] = $3;
-		  gsub(/\^\^.*/,"",annotationEdgeLength[$1]);
-		  gsub(/"/,"",annotationEdgeLength[$1]);
+		  annotation[c[1]] = c[3];
 		}
-	  else if ($2 == "<http://www.evolutionaryontology.org/cdao.owl#represented_by_Node>")
+	  # has_Float_Value
+	  else if (c[2] == "<http://purl.obolibrary.org/obo/CDAO_0000218>")
 		{
-		  taxon[$3] = gensub(/[<>]/,"'","G", $1) ;
+		  annotationEdgeLength[c[1]] = c[3];
+		  gsub(/\^\^.*/,"",annotationEdgeLength[c[1]]);
+		  gsub(/"/,"",annotationEdgeLength[c[1]]);
+		}
+	  # represents_TU
+	  else if (c[2] == "<http://purl.obolibrary.org/obo/CDAO_0000187>")
+		{
+		  taxon[c[1]] = c[3];
+		  TU[c[1]] = c[3];
+		}
+	  # taxon label
+	  else if (c[2] = "<http://www.w3.org/2000/01/rdf-schema#label>")
+		{
+		  TUtaxon[c[1]] = gensub(/"/,"","G", c[3]) ;
 		}
 	}
 
@@ -35,6 +49,13 @@ function cdao2fyt( INFILE )
 	  bl[i] = annotationEdgeLength[annotation[parentEdge[i]]] ;
 	  if (!bl[i]) { hasBL = 0 };  # a single missing BL cancels BLs
 	  nDaughter[parent[i]]++;
+	  if ((taxon[i]) && (taxon[i] !~ /http/))
+		{
+		  taxon[i] = TUtaxon[TU[i]];
+		}
 	}
+  
+  OFS="\t";
+  # for (i in parent)  print i, parent[i], bl[i], taxon[i] ;
 }
-
+   

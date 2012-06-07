@@ -59,8 +59,9 @@ BEGIN{
 	{ error("method of phylomatic or convert must be given") }
   if ((f["method"] == "phylomatic") && (!f["taxa"]))
 	{ error("if method=phylomatic, taxa must be given") }
-  if ((f["informat"] != "newick") && (f["informat"] != "nexml"))
-	{ error("informat must be either newick or nexml") }
+  if ((f["informat"] != "newick") && (f["informat"] != "nexml") && \
+	  (f["informat"] != "cdaordf"))
+	{ error("informat must be either newick, nexml or cdaordf") }
 
   # BEGIN controller
 
@@ -106,6 +107,7 @@ BEGIN{
 		  RS = "\x04"; 
 		  cmd |& getline results ;
 		  close(cmd);
+		  readfyt(results);
 		}
 	  else if ((f["intreeuri"]) &&  (f["informat"] == "nexml"))
 		{
@@ -117,8 +119,19 @@ BEGIN{
 		  # getline results < "run/" PS ".fyt" ;
 		  cmd2 | getline results ;
 		  close(cmd2);
+		  readfyt(results);
 		}
-	  readfyt(results);
+	  else if ((f["intreeuri"]) &&  (f["informat"] == "cdaordf"))
+		{
+		  cmd = "curl -L -H \"Accept: application/rdf+xml\" \"" f["intreeuri"] "\" > run/" PS ".rdf" ;
+		  if (system(cmd) != 0)	{ error("copying file from url failed") }
+		  close(cmd);
+		  cmd2 = "rapper -i rdfxml -o ntriples run/" PS ".rdf";
+		  RS = "\x04";
+		  cmd2 | getline results ;
+		  close(cmd2);
+		  cdao2fyt(results) ;
+		}
 		  
 	  print "Content-type: text/plain\n\n";
 	  # print results;

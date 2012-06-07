@@ -7,7 +7,7 @@
 # XMLMODE = 1;
 # while ((getline < INFILE) > 0 )
 
-BEGIN { XMLCHARSET="utf-8" }
+BEGIN { XMLCHARSET="utf-8" } # <-- vital 
 
 {
   if (XMLSTARTELEM == "otu")
