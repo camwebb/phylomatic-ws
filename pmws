@@ -7,15 +7,27 @@
 ## http://www.opensource.org/licenses/bsd-license.php
 ## Copyright (c) 2012, Campbell Webb <cwebb@oeb.harvard.edu>
 
+# (requires gawk4)
+
+@include "lib/fyt2new.awk"
+@include "lib/cdao2fyt.awk"
+@include "lib/readfyt.awk"
+@include "lib/utils.awk"
+
 BEGIN{
 
   ORS = "";
+  PS = PROCINFO["pid"] ;
 
   # test for phylomatic in path
   RS = "\n";
   "which phylomatic" | getline whichpm;
   if ( whichpm ~ /phylomatic/) PM = "phylomatic" ;
   else PM = "./phylomatic" ; # need symlink in same dir
+
+  # clean old files (older than one minute)
+  system("rm -f `find run -type f -cmin +1 -not -name .gitignore -print` \
+          >& /dev/null");
 
   # GET or POST?
   # test with curl -d "a=b" [-G] <URL>
@@ -26,76 +38,97 @@ BEGIN{
 	}
   else getline IN;
 
-  # parse
+  # parse input
   split( IN, query, "&" );
   for (i in query)
 	{
 	  split(query[i],tmpquery,"=");
-	  f[tmpquery[1]] = decode(substr(tmpquery[2], 1, 5000)); 
+	  # test for size of tree
+	  if (length(tmpquery[2]) > 10000) 
+		{ error("Trees over 10kB must be passed by URI") }  
+	  f[tmpquery[1]] = decode(tmpquery[2]);
 	}
 
-  print "Content-type: text/plain\n\n";
-  
-  for( i in f )
+  # Check for switches:
+
+  if ((!f["intree"]) && (!f["intreeuri"])) 
+	{ error("either intree or intreeuri must be given") }
+  if ((f["intree"]) && (f["intreeuri"])) 
+	{ error("either intree OR intreeuri must be given") }
+  if ((f["method"] != "phylomatic") && (f["method"] != "convert"))
+	{ error("method of phylomatic or convert must be given") }
+  if ((f["method"] == "phylomatic") && (!f["taxa"]))
+	{ error("if method=phylomatic, taxa must be given") }
+  if ((f["informat"] != "newick") && (f["informat"] != "nexml"))
+	{ error("informat must be either newick or nexml") }
+
+  # BEGIN controller
+
+  # phylomatic
+
+  if (f["method"] == "phylomatic")
 	{
-	  print i " = " f[i] "\n" ;
+	  print gensub(/\|/,"\n","G", encode(f["taxa"])) "\n" > "run/" PS ".taxa" ;
+
+	  # tree data provided directly 
+	  if (f["intree"]) 
+		{
+		  if ((f["informat"] == "newick") || (f["informat"] == ""))
+			{
+			  print encode(f["intree"]) > "run/" PS ".phylo" ;
+			}
+		  else if (f["informat"] == "nexml")
+			{
+			  print encode(f["intree"]) > "run/" PS ".nexml" ;
+			  system("cat run/" PS ".nexml | ./nexml2newick > run/" PS ".phylo")			}
+		}
+	  else # intreeuri
+		{
+		}
+
+	  # Run CLI phylomatic
+	  system(PM " -t run/" PS ".taxa -f run/" PS ".phylo > run/" PS ".out") ;
+	  RS = "\x04"; 
+	  "cat run/" PS ".out" | getline results ;
+
+	  print "Content-type: text/plain\n\n";
+	  print decode(results);
 	}
 
-  exit;
-}
+  # FORMAT CONVERSIONS
+  else if (f["method"] == "convert")
+	{
+	  if ((f["intree"]) &&  (f["informat"] == "nexml"))
+		{
+		  cmd = "xgawk -f lib/nexml2fyt.awk" ;
+		  print f["intree"] |& cmd ;
+		  close(cmd, "to");
+		  RS = "\x04"; 
+		  cmd |& getline results ;
+		  close(cmd);
+		}
+	  else if ((f["intreeuri"]) &&  (f["informat"] == "nexml"))
+		{
+		  cmd = "curl \"" f["intreeuri"] "\" > run/" PS ".nexml" ;
+		  if (system(cmd) != 0)	{ error("copying file from url failed") }
+		  close(cmd);
+		  cmd2 = "xgawk -f lib/nexml2fyt.awk run/" PS ".nexml";
+		  RS = "\x04";
+		  # getline results < "run/" PS ".fyt" ;
+		  cmd2 | getline results ;
+		  close(cmd2);
+		}
+	  readfyt(results);
+		  
+	  print "Content-type: text/plain\n\n";
+	  # print results;
+	  fyt2new();
 
-
-# decode urlencoded string
-function decode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
-	
-  split("0 1 2 3 4 5 6 7 8 9 a b c d e f", hex, " ")
-  for (i=0; i<16; i++) hextab[hex[i+1]] = i
-  
-  # urldecode function from Heiner Steven
-  # http://www.shelldorado.com/scripts/cmds/urldecode
-
-  # decode %xx to ASCII char 
-  decoded = ""
-  i = 1
-  len = length(text)
-  
-  while ( i <= len ) {
-    c = substr (text, i, 1)
-    if ( c == "%" ) {
-      if ( i+2 <= len ) {
-	c1 = tolower(substr(text, i+1, 1))
-	c2 = tolower(substr(text, i+2, 1))
-	if ( hextab [c1] != "" || hextab [c2] != "" ) {
-	  # print "Read: %" c1 c2;
-	  # Allow: 
-	  # 20 begins main chars, but dissallow 7F (wrong in orig code!)
-	       # tab, newline, formfeed, carriage return
-	  if ( ( (c1 >= 2) && ((c1 c2) != "7f") )  \
-	       || (c1 == 0 && c2 ~ "[9acd]") )
-	  {
-	    code = 0 + hextab [c1] * 16 + hextab [c2] + 0
-	    # print "Code: " code
-	    c = sprintf ("%c", code)
-	  } else {
-	    # for dissallowed chars
-	    c = " "
-	  }
-	  i = i + 2
+	  # curl --data-urlencode intree@tmp/nexmlconvert.post -d method=convert -d informat=nexml http://localhost/~cam/phylomatic-ws/pmws
+      # curl -d intreeuri=http://localhost/~cam/phylomatic-ws/eg/tol.nexml.xml -d method=convert -d informat=nexml http://localhost/~cam/phylomatic-ws/pmws > out
 	}
-      }
-    } else if ( c == "+" ) {	# special handling: "+" means " "
-      c = " "
-    }
-    decoded = decoded c
-    ++i
-  }
-  
-  # change linebreaks to \n
-  gsub(/\r\n/, "\n", decoded);
-  
-  # remove last linebreak
-  sub(/[\n\r]*$/,"",decoded);
-  
-  return decoded
+
+  else error("Method needed") ;
+
 }
 
