@@ -108,7 +108,7 @@ BEGIN{
 		}
 	  else if ((f["intreeuri"]) &&  (f["informat"] == "nexml"))
 		{
-		  cmd = "curl \"" f["intreeuri"] "\" > run/" PS ".nexml" ;
+		  cmd = "curl -s \"" f["intreeuri"] "\" > run/" PS ".nexml" ;
 		  if (system(cmd) != 0)	{ error("copying file from url failed") }
 		  close(cmd);
 		  cmd2 = XGAWK " -f lib/nexml2fyt.awk run/" PS ".nexml";
@@ -132,7 +132,7 @@ BEGIN{
 
 	  else if ((f["intreeuri"]) &&  (f["informat"] == "cdaordf"))
 		{
-		  cmd = "curl -L -H \"Accept: application/rdf+xml\" \"" f["intreeuri"] "\" > run/" PS ".rdf" ;
+		  cmd = "curl -s -L -H \"Accept: application/rdf+xml\" \"" f["intreeuri"] "\" > run/" PS ".rdf" ;
 		  if (system(cmd) != 0)	{ error("copying file from url failed") }
 		  close(cmd);
 		  cmd2 = RAPPER " -i rdfxml -o ntriples run/" PS ".rdf";

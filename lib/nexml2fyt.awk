@@ -34,11 +34,11 @@ BEGIN { XMLCHARSET="utf-8" } # <-- vital
 			  taxon[XMLATTR["id"]] = XMLATTR["label"];
 			}
 		  
-		  # create parent for root
-		  if (XMLATTR["root"] == "true")
-			{
-			  parent[XMLATTR["id"]] = "NULL";
-			}
+		  # create parent for root (root not always specified explicitly)
+		  # if (XMLATTR["root"] == "true")
+		  # 	{
+		  #	  parent[XMLATTR["id"]] = "NULL";
+		  #	}
 		}
 	}
   else if (XMLSTARTELEM == "edge")
@@ -55,6 +55,9 @@ BEGIN { XMLCHARSET="utf-8" } # <-- vital
 END {
 
   # attach labels (can't be done on read, in case otu block is after trees) 
+
+  # find the root
+  for (i in parent) if (!parent[parent[i]]) { root = parent[i]; parent[root] = "NULL" }
 
   OFS = "\t";
   for (i in parent)
