@@ -4,6 +4,27 @@ function error( msg ) {
   exit ;
 }
 
+function findexecs(          which) {
+
+  # test for phylomatic in path
+  RS = "\n";
+  "which phylomatic" | getline which;
+  if ( which ~ /phylomatic/) PM = "phylomatic" ;
+  else PM = "bin/phylomatic" ; # need symlink in same dir
+
+  # rapper
+  RS = "\n";
+  "which rapper" | getline which;
+  if ( which ~ /rapper/) RAPPER = "rapper" ;
+  else RAPPER = "bin/rapper" ; # need symlink in same dir
+
+  # xgawk
+  RS = "\n";
+  "which xgawk" | getline which;
+  if ( which ~ /xgawk/) XGAWK = "xgawk" ;
+  else XGAWK = "bin/xgawk" ; # need symlink in same dir
+}
+
 # decode urlencoded string
 function decode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
 	

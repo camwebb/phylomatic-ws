@@ -19,11 +19,8 @@ BEGIN{
   ORS = "";
   PS = PROCINFO["pid"] ;
 
-  # test for phylomatic in path
-  RS = "\n";
-  "which phylomatic" | getline whichpm;
-  if ( whichpm ~ /phylomatic/) PM = "phylomatic" ;
-  else PM = "./phylomatic" ; # need symlink in same dir
+  # set execs
+  findexecs();
 
   # clean old files (older than one minute)
   system("rm -f `find run -type f -cmin +1 -not -name .gitignore -print` \
@@ -101,7 +98,7 @@ BEGIN{
 	{
 	  if ((f["intree"]) &&  (f["informat"] == "nexml"))
 		{
-		  cmd = "xgawk -f lib/nexml2fyt.awk" ;
+		  cmd = XGAWK " -f lib/nexml2fyt.awk" ;
 		  print f["intree"] |& cmd ;
 		  close(cmd, "to");
 		  RS = "\x04"; 
@@ -114,19 +111,31 @@ BEGIN{
 		  cmd = "curl \"" f["intreeuri"] "\" > run/" PS ".nexml" ;
 		  if (system(cmd) != 0)	{ error("copying file from url failed") }
 		  close(cmd);
-		  cmd2 = "xgawk -f lib/nexml2fyt.awk run/" PS ".nexml";
+		  cmd2 = XGAWK " -f lib/nexml2fyt.awk run/" PS ".nexml";
 		  RS = "\x04";
 		  # getline results < "run/" PS ".fyt" ;
 		  cmd2 | getline results ;
 		  close(cmd2);
 		  readfyt(results);
 		}
+
+	  else if ((f["intree"]) &&  (f["informat"] == "cdaordf"))
+		{
+		  print f["intree"] > "run/" PS ".rdf" ;
+		  close("run/" PS ".rdf"); # <- dont' forget this!
+		  cmd = RAPPER " -i rdfxml -o ntriples run/" PS ".rdf";
+		  RS = "\x04";
+		  cmd | getline results ;
+		  close(cmd);
+		  cdao2fyt(results) ;
+		}
+
 	  else if ((f["intreeuri"]) &&  (f["informat"] == "cdaordf"))
 		{
 		  cmd = "curl -L -H \"Accept: application/rdf+xml\" \"" f["intreeuri"] "\" > run/" PS ".rdf" ;
 		  if (system(cmd) != 0)	{ error("copying file from url failed") }
 		  close(cmd);
-		  cmd2 = "rapper -i rdfxml -o ntriples run/" PS ".rdf";
+		  cmd2 = RAPPER " -i rdfxml -o ntriples run/" PS ".rdf";
 		  RS = "\x04";
 		  cmd2 | getline results ;
 		  close(cmd2);

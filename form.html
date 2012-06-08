@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	<meta content="application/xhtml+xml; charset=utf-8" http-equiv="content-type"/>
+	<title>Phylomatic web form</title>
+	<!-- <link rel="stylesheet" type="text/css" href="xsl/xmalesia.css" /> -->
+  </head>
+  <body>
+	<h1>Phylomatic version 3, web form</h1>
+	<form method="post" action="pmws">
+	  <table>
+		<tr>
+		  <td>method</td>
+		  <td>
+			<select name="method">
+			  <option selected="selected" value=""></option>
+			  <option value="convert">convert</option>
+			  <option value="phylomatic">phylomatic</option>
+			</select>	
+		  </td>
+		</tr>
+		<tr>
+		  <td>intree</td>
+		  <td>
+			<textarea cols="60" rows="10" name="intree"></textarea>
+		  </td>
+		</tr>
+		<tr>
+		  <td>intreeuri</td>
+		  <td>
+			<input name="intreeuri" type="text" size="50"/>
+		  </td>
+		</tr>
+		<tr>
+		  <td>informat</td>
+		  <td>
+			<select name="informat">
+			  <option selected="selected" value=""></option>
+			  <option value="newick">newick</option>
+			  <option value="nexml">nexml</option>
+			  <option value="cdaordf">cdaordf</option>
+			</select>	
+		  </td>
+		</tr>
+		<tr>
+		  <td>
+			<input type="reset" value="Reset"/>
+		  </td>
+		  <td>
+			<input type="submit" value="Send"/>
+		  </td>
+		</tr>
+	  </table>
+	</form>
+  </body>
+</html>
