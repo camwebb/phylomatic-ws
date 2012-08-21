@@ -5,7 +5,7 @@ function cdao2fyt( n3  )
   nrow = split(n3, row, "\n") ;
   for (r = 1 ; r < nrow ; r++)
 	{
-	  ncol = patsplit(row[r], c, "([^\ ]+)|(\"[^\"]+\")" ) ;
+	  ncol = patsplit(row[r], c, /([^\ ]+)|("[^"]+")/ ) ;
 
 	  # has_Parent
 	  if (c[2] == "<http://purl.obolibrary.org/obo/CDAO_0000179>")

@@ -14,7 +14,7 @@ function fyt2new(                   )
   #   5. (optional) notes attached node
 
   # check for root:
-  if (!root) { print "No root found" ; exit }
+  if (root == "") { print "No root found" ; exit }
 
   # SetNodePointers, lDaughter, rSister needed for down-pass recursivity
 
