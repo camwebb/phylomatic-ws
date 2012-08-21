@@ -1,4 +1,4 @@
-#!/usr/bin/gawk -f
+#!/opt/bin/gawk -f
 
 ## Webservice for phylomatic 
 
