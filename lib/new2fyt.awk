@@ -115,6 +115,9 @@ function new2fyt( newick      , j , k, taxa, i, done, b)
 		}
 	  else i++
 	}
+  
+  # change the root parent
+  parent[0] = "NULL";
 
 }
 

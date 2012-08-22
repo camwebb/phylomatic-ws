@@ -1,4 +1,4 @@
-#!/opt/bin/gawk -f
+#!/usr/local/bin/gawk -f
 
 ## Webservice for phylomatic 
 
@@ -7,7 +7,7 @@
 ## http://www.opensource.org/licenses/bsd-license.php
 ## Copyright (c) 2012, Campbell Webb <cwebb@oeb.harvard.edu>
 
-# (requires gawk4)
+# (requires gawk4 installed at /usr/local/bin)
 
 @include "lib/fyt2new.awk"
 @include "lib/cdao2fyt.awk"
@@ -15,12 +15,14 @@
 @include "lib/utils.awk"
 @include "lib/new2fyt.awk"
 
+# This script is the main controller
+
 BEGIN{
 
   ORS = "";
-  PS = PROCINFO["pid"] ;
+  # PS = PROCINFO["pid"] ;
 
-  # set execs
+  # set executables. One may need to add symlinks to bin/ dir.
   findexecs();
 
   # clean old files (older than one minute)
@@ -35,19 +37,19 @@ BEGIN{
 	  IN = ENVIRON["QUERY_STRING"] ;
 	}
   else getline IN;
-
+  
   # parse input
   split( IN, query, "&" );
   for (i in query)
 	{
 	  split(query[i],tmpquery,"=");
 	  # test for size of tree
-	  if (length(tmpquery[2]) > 10000) 
+	  if (length(tmpquery[2]) > 10000)
 		{ error("Trees over 10kB must be passed by URI") }  
 	  f[tmpquery[1]] = decode(tmpquery[2]);
 	}
 
-  # Check for switches:
+  # Check for consistency in switches:
 
   if ((!f["intree"]) && (!f["intreeuri"]) && (!f["storedtree"])) 
 	{ error("either intree or intreeuri or storedtree must be given") }
@@ -58,76 +60,65 @@ BEGIN{
 	{ error("method of phylomatic or convert must be given") }
   if ((f["method"] == "phylomatic") && (!f["taxa"]))
 	{ error("if method=phylomatic, taxa must be given") }
-  if ((f["informat"] != "newick") && (f["informat"] != "nexml") && \
+  if ((f["informat"] != "newick") && (f["informat"] != "nexml") &&	\
 	  (f["informat"] != "cdaordf"))
 	{ error("informat must be either newick, nexml or cdaordf") }
 
   # BEGIN controller
 
-  # MEGATREE IN:
+  # 1. MEGATREE via URI TO MEMORY:
 
-  if ((f["intree"]) &&  (f["informat"] == "nexml"))
+  if(f["intreeuri"])
+	{
+	  cmd = "curl --max-filesize 10000000 -L -s -H \"Accept: application/rdf+xml\" \"" f["intreeuri"] "\"";
+	  RS = "\x04";
+	  cmd | getline f["intree"] ;
+	  close(cmd);
+	}
+  
+  else if (f["storedtree"])
+	{
+	  RS = "\x04";
+	  # note: the ( ) are needed
+	  getline f["intree"] < ( "data/" f["storedtree"] ".new" ) ;
+	  close("data/" f["storedtree"] ".new");
+	}
+
+  # 2. CONVERT TO internal phylo structure
+
+  if (f["informat"] == "newick")
+	{
+	  new2fyt(f["intree"]);
+	}
+
+  else if (f["informat"] == "cdaordf")
+	{	
+	  cmd = RAPPER " -q -i rdfxml -o ntriples - 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'"
+	  print f["intree"] |& cmd ;
+	  close(cmd, "to");
+	  RS = "\x04";
+	  cmd |& getline results ;
+	  close(cmd);
+	  cdaottl2fyt(results) ;
+	}
+
+  else if (f["informat"] == "nexml")
 	{
 	  cmd = XGAWK " -f lib/nexml2fyt.awk" ;
 	  print f["intree"] |& cmd ;
 	  close(cmd, "to");
-	  RS = "\x04"; 
+	  RS = "\x04";
 	  cmd |& getline results ;
 	  close(cmd);
 	  readfyt(results);
 	}
 
-  else if ((f["intreeuri"]) &&  (f["informat"] == "nexml"))
-	{
-	  # for testing:
-	  # curl --data-urlencode intree@tmp/nexmlconvert.post -d method=convert \
-	  #   -d informat=nexml http://localhost/~cam/phylomatic-ws/pmws
-      # curl -d intreeuri=http://localhost/~cam/phylomatic-ws/eg/tol.nexml.xml \
-	  #   -d method=convert -d informat=nexml \
-	  #   http://localhost/~cam/phylomatic-ws/pmws > out
-
-	  cmd = "curl --max-filesize 10000000 -L -s \"" f["intreeuri"] "\" > run/" PS ".nexml" ;
-	  if (system(cmd) != 0)	{ error("copying file from url failed") }
-	  close(cmd);
-	  cmd2 = XGAWK " -f lib/nexml2fyt.awk run/" PS ".nexml";
-	  RS = "\x04";
-	  # getline results < "run/" PS ".fyt" ;
-	  cmd2 | getline results ;
-	  close(cmd2);
-	  readfyt(results);
-	}
-
-  else if ((f["intree"]) &&  (f["informat"] == "cdaordf"))
-	{
-	  print f["intree"] > "run/" PS ".rdf" ;
-	  close("run/" PS ".rdf"); # <- dont' forget this!
-	  cmd = RAPPER " -i rdfxml -o ntriples run/" PS ".rdf";
-	  RS = "\x04";
-	  cmd | getline results ;
-	  close(cmd);
-	  cdao2fyt(results) ;
-	}
-
-  else if ((f["intreeuri"]) &&  (f["informat"] == "cdaordf"))
-	{
-	  cmd = "curl --max-filesize 10000000 -s -L -H \"Accept: application/rdf+xml\" \"" f["intreeuri"] "\" > run/" PS ".rdf" ;
-	  if (system(cmd) != 0)	{ error("copying file from url failed") }
-	  close(cmd);
-	  cmd2 = RAPPER " -i rdfxml -o ntriples run/" PS ".rdf";
-	  RS = "\x04";
-	  cmd2 | getline results ;
-	  close(cmd2);
-	  cdao2fyt(results) ;
-	}
-
-  else if ((f["intree"]) &&  (f["informat"] == "newick"))
-	{
-	  new2fyt( f["intree"] );
-	  #print "Content-type: text/plain\n\n";
-	  #for (i in parent) print i, parent[i], bl[i], taxon[i] "\n";
-	  #exit;
-	}
-
+  # for testing:
+  # curl --data-urlencode intree@tmp/nexmlconvert.post -d method=convert \
+  #   -d informat=nexml http://localhost/~cam/phylomatic-ws/pmws
+  # curl -d intreeuri=http://localhost/~cam/phylomatic-ws/eg/tol.nexml.xml \
+  #   -d method=convert -d informat=nexml								\
+  #   http://localhost/~cam/phylomatic-ws/pmws > out
 
   # METHODS:
 
@@ -164,11 +155,10 @@ BEGIN{
   # FORMAT CONVERSIONS
   else if (f["method"] == "convert")
 	{
-		  
 	  print "Content-type: text/plain\n\n";
-	  # print results;
-	  fyt2new();
-
+	  if (f["outformat"] == "newick") fyt2new();
+	  else if (f["outformat"] == "fyt") printfyt();
+	  
 	}
   
 }

@@ -1,4 +1,4 @@
-function cdao2fyt( n3  )
+function cdaottl2fyt( n3  )
 {
 
   # split into rows

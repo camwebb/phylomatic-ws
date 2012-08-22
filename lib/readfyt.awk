@@ -30,3 +30,9 @@ function readfyt( results ,        nrow, r, row, c )
   # returned by reference
 
 }
+
+function printfyt()
+{
+  OFS="\t";
+  for (i in parent) print i, parent[i], bl[i], taxon[i] "\n";
+}
