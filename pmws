@@ -51,11 +51,11 @@ BEGIN{
 
   # Check for consistency in switches:
 
-  if ((!f["intree"]) && (!f["intreeuri"]) && (!f["storedtree"])) 
-	{ error("either intree or intreeuri or storedtree must be given") }
-  if (length( substr(f["intree"],1,1) substr(f["intreeuri"],1,1) \
+  if ((!f["tree"]) && (!f["treeuri"]) && (!f["storedtree"])) 
+	{ error("either tree or treeuri or storedtree must be given") }
+  if (length( substr(f["tree"],1,1) substr(f["treeuri"],1,1) \
 			  substr(f["storedtree"],1,1)) > 1) 
-	{ error("either intree OR intreeuri OR storedtree must be given") }
+	{ error("either tree OR treeuri OR storedtree must be given") }
   if ((f["method"] != "phylomatic") && (f["method"] != "convert"))
 	{ error("method of phylomatic or convert must be given") }
   if ((f["method"] == "phylomatic") && (!f["taxa"]))
@@ -68,11 +68,11 @@ BEGIN{
 
   # 1. MEGATREE via URI TO MEMORY:
 
-  if(f["intreeuri"])
+  if(f["treeuri"])
 	{
-	  cmd = "curl --max-filesize 10000000 -L -s -H \"Accept: application/rdf+xml\" \"" f["intreeuri"] "\"";
+	  cmd = "curl --max-filesize 10000000 -L -s -H \"Accept: application/rdf+xml\" \"" f["treeuri"] "\"";
 	  RS = "\x04";
-	  cmd | getline f["intree"] ;
+	  cmd | getline f["tree"] ;
 	  close(cmd);
 	}
   
@@ -80,7 +80,7 @@ BEGIN{
 	{
 	  RS = "\x04";
 	  # note: the ( ) are needed
-	  getline f["intree"] < ( "data/" f["storedtree"] ".new" ) ;
+	  getline f["tree"] < ( "data/" f["storedtree"] ".new" ) ;
 	  close("data/" f["storedtree"] ".new");
 	}
 
@@ -88,13 +88,13 @@ BEGIN{
 
   if (f["informat"] == "newick")
 	{
-	  new2fyt(f["intree"]);
+	  new2fyt(f["tree"]);
 	}
 
   else if (f["informat"] == "cdaordf")
 	{	
 	  cmd = RAPPER " -q -i rdfxml -o ntriples - 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'"
-	  print f["intree"] |& cmd ;
+	  print f["tree"] |& cmd ;
 	  close(cmd, "to");
 	  RS = "\x04";
 	  cmd |& getline results ;
@@ -105,7 +105,7 @@ BEGIN{
   else if (f["informat"] == "nexml")
 	{
 	  cmd = XGAWK " -f lib/nexml2fyt.awk" ;
-	  print f["intree"] |& cmd ;
+	  print f["tree"] |& cmd ;
 	  close(cmd, "to");
 	  RS = "\x04";
 	  cmd |& getline results ;
@@ -114,9 +114,9 @@ BEGIN{
 	}
 
   # for testing:
-  # curl --data-urlencode intree@tmp/nexmlconvert.post -d method=convert \
+  # curl --data-urlencode tree@tmp/nexmlconvert.post -d method=convert \
   #   -d informat=nexml http://localhost/~cam/phylomatic-ws/pmws
-  # curl -d intreeuri=http://localhost/~cam/phylomatic-ws/eg/tol.nexml.xml \
+  # curl -d treeuri=http://localhost/~cam/phylomatic-ws/eg/tol.nexml.xml \
   #   -d method=convert -d informat=nexml								\
   #   http://localhost/~cam/phylomatic-ws/pmws > out
 
@@ -128,18 +128,18 @@ BEGIN{
 	  print gensub(/\|/,"\n","G", encode(f["taxa"])) "\n" > "run/" PS ".taxa" ;
 
 	  # tree data provided directly 
-	  if (f["intree"]) 
+	  if (f["tree"]) 
 		{
 		  if ((f["informat"] == "newick") || (f["informat"] == ""))
 			{
-			  print encode(f["intree"]) > "run/" PS ".phylo" ;
+			  print encode(f["tree"]) > "run/" PS ".phylo" ;
 			}
 		  else if (f["informat"] == "nexml")
 			{
-			  print encode(f["intree"]) > "run/" PS ".nexml" ;
+			  print encode(f["tree"]) > "run/" PS ".nexml" ;
 			  system("cat run/" PS ".nexml | ./nexml2newick > run/" PS ".phylo")			}
 		}
-	  else # intreeuri
+	  else # treeuri
 		{
 		}
 
