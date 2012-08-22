@@ -14,6 +14,7 @@
 @include "lib/readfyt.awk"
 @include "lib/utils.awk"
 @include "lib/new2fyt.awk"
+@include "lib/phylomatic.awk"
 
 # This script is the main controller
 
@@ -124,32 +125,33 @@ BEGIN{
 
   if (f["method"] == "phylomatic")
 	{
-	  # get taxa
-	  print gensub(/\|/,"\n","G", encode(f["taxa"])) "\n" > "run/" PS ".taxa" ;
+	  phylomatic();
+	  # # get taxa
+	  # print gensub(/\|/,"\n","G", encode(f["taxa"])) "\n" > "run/" PS ".taxa" ;
 
-	  # tree data provided directly 
-	  if (f["tree"]) 
-		{
-		  if ((f["informat"] == "newick") || (f["informat"] == ""))
-			{
-			  print encode(f["tree"]) > "run/" PS ".phylo" ;
-			}
-		  else if (f["informat"] == "nexml")
-			{
-			  print encode(f["tree"]) > "run/" PS ".nexml" ;
-			  system("cat run/" PS ".nexml | ./nexml2newick > run/" PS ".phylo")			}
-		}
-	  else # treeuri
-		{
-		}
+	  # # tree data provided directly 
+	  # if (f["tree"]) 
+	  # 	{
+	  # 	  if ((f["informat"] == "newick") || (f["informat"] == ""))
+	  # 		{
+	  # 		  print encode(f["tree"]) > "run/" PS ".phylo" ;
+	  # 		}
+	  # 	  else if (f["informat"] == "nexml")
+	  # 		{
+	  # 		  print encode(f["tree"]) > "run/" PS ".nexml" ;
+	  # 		  system("cat run/" PS ".nexml | ./nexml2newick > run/" PS ".phylo")			}
+	  # 	}
+	  # else # treeuri
+	  # 	{
+	  # 	}
 
-	  # Run CLI phylomatic
-	  system(PM " -t run/" PS ".taxa -f run/" PS ".phylo > run/" PS ".out") ;
-	  RS = "\x04"; 
-	  "cat run/" PS ".out" | getline results ;
+	  # # Run CLI phylomatic
+	  # system(PM " -t run/" PS ".taxa -f run/" PS ".phylo > run/" PS ".out") ;
+	  # RS = "\x04"; 
+	  # "cat run/" PS ".out" | getline results ;
 
-	  print "Content-type: text/plain\n\n";
-	  print decode(results);
+	  # print "Content-type: text/plain\n\n";
+	  # print decode(results);
 	}
 
   # FORMAT CONVERSIONS
