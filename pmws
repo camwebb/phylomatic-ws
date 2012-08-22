@@ -126,6 +126,8 @@ BEGIN{
   if (f["method"] == "phylomatic")
 	{
 	  phylomatic();
+
+	  
 	  # # get taxa
 	  # print gensub(/\|/,"\n","G", encode(f["taxa"])) "\n" > "run/" PS ".taxa" ;
 
@@ -155,13 +157,13 @@ BEGIN{
 	}
 
   # FORMAT CONVERSIONS
-  else if (f["method"] == "convert")
-	{
+  #else if (f["method"] == "convert")
+#	{
 	  print "Content-type: text/plain\n\n";
 	  if (f["outformat"] == "newick") fyt2new();
 	  else if (f["outformat"] == "fyt") printfyt();
 	  
-	}
+#	}
   
 }
 
