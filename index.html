@@ -14,7 +14,7 @@
 	  web-service.  To call the service directly, either GET or POST
 	  (for sending large trees) the paramenters (named exactly as on
 	  this form) to
-	  <code>http://phylodiversity.net/phylomatic3/pmws</code>. This is a new tool, so <i>please</i> let me know if it is not working, or if you have comments (<a href="mailto:cwebb@oeb.harvard.edu">email</a>).  Thanks to the NESCent <a href="http://phylotastic.org">PhyloTastic!</a> project for support and encouragement for making this upgrade. 
+	  <code>http://phylodiversity.net/phylomatic3/pmws</code>. This is a new tool, so <i>please</i> let me know if it is not working, or if you have comments (<a href="mailto:cwebb@oeb.harvard.edu">email</a>).  Thanks to the NESCent <a href="http://phylotastic.org"><img style="vertical-align:middle;" src="html/img/phylotastic.png" height="20px" alt="PhyloTastic!"/></a> project for impetus and encouragement for making this upgrade. 
 	</p>	  
 	<form method="post" action="pmws">
 	  <table>
@@ -26,7 +26,7 @@
 		  <td>
 			<textarea cols="50" rows="5" name="tree"></textarea>
 		  </td>
-		  <td style="font-size:12px;">Paste in your megatree here</td>
+		  <td style="font-size:12px;">Paste in your megatree here (&lt;100kB)</td>
 		</tr>
 		<tr>
 		  <td>&#160;</td>
@@ -91,7 +91,7 @@
 		<tr>
 		  <td><code>method</code> =</td>
 		  <td>
-			<input type="radio" name="method" value="phylomatic" />
+			<input type="radio" name="method" value="phylomatic" checked="checked" />
 			<code>phylomatic</code>
 		  </td>
 		  <td style="font-size:12px;">Graft your taxa into the megatree, and then prune the megatree to just your taxa</td>
