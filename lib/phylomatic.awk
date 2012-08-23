@@ -30,7 +30,8 @@ function phylomatic(       ntaxatrees, taxa, newnode, i, nnodes, node, j, \
 			  #  megatree
 
 			  # if (taxon[k] == "shorea") print " shorea at t " i " vs " node[j] "\n"; 
-			  if (node[j] == taxon[k])
+			  # case insensitive
+			  if (tolower(node[j]) == tolower(taxon[k]))
 				{
 				  # print "found " taxon[k] " for t " i " j " j "/" nnodes "\n";
 				  #  if matches, add to megatree:
