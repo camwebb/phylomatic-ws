@@ -7,6 +7,7 @@
 	<!-- <link rel="stylesheet" type="text/css" href="xsl/xmalesia.css" /> -->
   </head>
   <body>
+	<div style="position:absolute;right:20px;top:20px">[ <a href="https://github.com/camwebb/phylomatic-ws">basic documentation</a> ]</div>
 	<h1>Phylomatic version 3</h1>
 	<form method="post" action="pmws">
 	  <table>
@@ -80,7 +81,7 @@
 			<input type="radio" name="method" value="convert"/>
 			<code>convert</code>
 		  </td>
-		  <td>&#160;</td>
+		  <td style="font-size:12px;">Convert an input format to an output format</td>
 		</tr>
 		<tr>
 		  <td colspan="2"><hr/></td>
@@ -93,14 +94,14 @@
 			<input type="radio" name="method" value="phylomatic" />
 			<code>phylomatic</code>
 		  </td>
-		  <td>&#160;</td>
+		  <td style="font-size:12px;">Graft your taxa into the megatree, and then prune the megatree to just your taxa</td>
 		</tr>
 		<tr>
 		  <td><code>taxa</code> =</td>
 		  <td>
 			<textarea cols="50" rows="5" name="taxa"></textarea>
 		  </td>
-		  <td>&#160;</td>
+		  <td style="font-size:12px;">Slash-delimited node paths, with returns between each taxon (see <a href="http://phylodiversity.net/phylocom/phylocom_manual.pdf">phylomatic documentation</a>)</td>
 		</tr>
 		<tr>
 		  <td>&#160;</td>
@@ -129,7 +130,7 @@
 		  <td>
 			<input type="checkbox" name="clean" value="true"/> <code>true</code>
 		  </td>
-		  <td>&#160;</td>
+		  <td style="font-size:12px;">Strip all single-descendent nodes</td>
 		</tr>
 
 		<tr>

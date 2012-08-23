@@ -12,6 +12,7 @@ body {
 	padding-bottom: 1em;
 	padding-right: 4em;
 	max-width: 800px;
+	position: absolute;
 }
 
 p, li {    line-height: 16pt;

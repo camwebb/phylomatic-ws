@@ -44,7 +44,9 @@ See it [live](http://phylodiversity.net/phylomatic3/pmws?storedtree=smith2011&in
 		us_argillosus%0ALilium_lankongense%0AGagea_sarmentosa%0ACepha
 		lanthera_rubra&outformat=newick&clean=true
 
-Data-in examples
+Does the match in 1.8 seconds on my quad-core Intel i5 laptop.
+
+Data input examples
 ----------------
 
 Here are some possible input URIs:
