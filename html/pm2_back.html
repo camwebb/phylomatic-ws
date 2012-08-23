@@ -1,0 +1,189 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Phylomatic</title>
+    <link rel="stylesheet" type="text/css" href="../css/pm.css">
+  </head>
+  <body>
+
+    <div class="header"><h1>Phylomatic</h1></div>
+
+    <div class="logo">
+      <a href="http://www.phylodiversity.net/cwebb">
+	<img src="img/phylomatic.png" height="50" align="right" alt="Rafflesia" border="0">
+      </a>
+    </div>
+
+    <div class="navbar">
+      <a href="pm2_form.html">
+	online phylomatic
+      </a><br>
+      <a href="http://www.phylodiversity.net/phylocom">
+	phylocom
+      </a><br>
+      <a href="http://www.phylodiversity.net/cwebb">
+	webb
+      </a><br>
+    </div>
+
+    <div class="main">
+
+    <h2>News</h2>
+    <p><b>APG3</b> tree <a href="http://svn.phylodiversity.net/tot/trees/angiosperms_apg2009.new">available</a>,
+    and <a href="http://svn.phylodiversity.net/tot/megatrees/R20091110.new">APG3
+    derived megatree</a> now the default base tree in the online
+    phylomatic. Many thanks to Steve Hovick and Ken Whitney for coding and checking the subtrees.</p>
+
+      <h2>Phylomatic 2</h2>
+      <p>
+      Over the years, the web-interface of phylomatic has seen a lot
+      of use.  However, I'm sure you have found it frustrating that
+      within-family resolution is generally missing.  Our goal with
+      phylomatic, way back, was to keep on top of the literature and
+      add clades to the megatree on a regular basis.  This was clearly
+      an unrealistic expectation.  However, the need is still here for
+      a tool for easily assembling phylogenies for communities and
+      other lists of plants.  I have now developed a work-plan that
+      opens the assembly of the tree-of-trees database to users of
+      phylomatic.  If there are particular clades that are not yet
+      well resolved in the database, please consider adding the newick
+      version of a suitable published tree to the public database of
+      trees.  I know that several researchers have started with a
+      backbone tree from phylomatic and then added better resolution
+      for additional clades, and I suspect that there was much
+      repetition of work because there was no way to share the
+      refinements that users made to the megatree.  Now we can all
+      work together on making a usable, flexible hypothesis for the
+      phylogeny of plants.
+      </p>
+
+      <p>
+	The components of `Phylomatic2' are:
+	</p><ul>
+	  <li>
+	    A
+	    standardized <a href="http://svn.phylodiversity.net/tot/doc/coding_phylogenies.txt">protocol</a>
+	    for encoding trees into newick.  This includes the choice
+	    of a permanent name (within the domain of phylomatic) for
+	    key interior nodes.  We would like to use, where possible,
+	    APG and/or PhyloCode-accepted names.
+	  </li>
+	  <li>
+	    An XML-format 
+<a href="http://svn.phylodiversity.net/tot/pmmd/template.xml">metadata
+	    file</a> to accompany each newick tree.
+	  </li>
+	  <li>
+	    An openly readable,
+	    text-based <a href="http://svn.phylodiversity.net/tot/trees/">data
+	    repository</a> for the trees, using
+	    the <a href="http://subversion.tigris.org/">Subversion</a>
+	    versioning system (to download the database, install an
+	    SVN client and type <code>svn checkout
+	    http://svn.phylodiversity.net/tot/trees</code>). If you
+	    are interested in contributing significantly and helping
+	    to fix errors in the database, please ask me for a SVN
+	    user account.
+	  </li>
+
+	  <li>
+	    Submission of user-transcribed trees and metadata files
+	    via email
+	    (<a href="mailto:newick {AT} phylodiversity {DOT} net">newick
+	    {AT} phylodiversity
+	    {DOT}
+	    net</a>), or by direct SVN checkin, for registered users.
+	    Please note that it may take a few days to weeks
+	    for email-submitted trees to be incorporated into the data
+	    repository (depending on how busy the tree curators are).
+	    However, this does not stop the users incorporating their
+	    new trees into their local copy of the database
+	    immediately, to generate the megatree that they need. 
+	  </li>
+	  <li>
+	    Once a local copy of the database has been downloaded, a
+	    <a href="http://svn.phylodiversity.net/tot/trees/makemega.config">configuration
+	    file</a> permits selection of alternate clade
+	    representations that might coexist in the database.
+	  </li>
+	  <li>
+	    A
+	    simple <a href="http://svn.phylodiversity.net/tot/tools/makemega">GAWK
+	    script</a> is  then run to assemble a single megatree,
+	    based on configuration options.  Alternatively, see the directory <a href="http://svn.phylodiversity.net/tot/megatrees/">http://svn.phylodiversity.net/tot/megatrees/</a> for recently compiled trees.
+	  </li>
+	  <li>
+	    This megatree is then ready for processing the taxon name
+	    list the user supplies, with the <code>phylomatic</code>
+	    program that comes in
+	    the <a href="http://phylodiversity.net/phylocom"><code>phylocom</code></a>
+	    bundle.
+	  </li>
+	</ul>
+      <p></p>
+
+      <p><i>Phylomatic2 and TreeBase</i> If you contribute to this
+      project, you will be concerned that your efforts in transcribing
+      and describing trees are not lost at some point in the future.
+      We have always considered phylomatic a pragmatic solution to a
+      real need, but one whose functions will one day be included in a
+      more sophisticated tool, the obvious choice being <a href="http://www.treebase.org/">TreeBase</a>.  I have discussed
+      the components of Phylomatic2 with Bill Piel, and, with a
+      translation script, our PMMD metadata structure should be
+      acceptable to the TreeBase database too, allowing dumping of
+      appropriate trees from our tree database directly into TreeBase.
+      What we can't offer, obviously, is the original data matrices.
+      </p>
+	
+      <p><i>Phylomatic2 and APweb</i> The ordinal-level
+      trees in Phylomatic are those displayed in Peter Steven's
+      <a href="http://www.mobot.org/MOBOT/research/APweb/">APweb</a>,
+      the foremost internet resource for plant systematic information.
+      I am in discussion with Peter, Amy Zanne, and others, about
+      possibly converting APweb from a `flat' data store to a
+      phylogenetically-structured database, that could link directly to
+      Phylomatic2.  Watch this space! </p>
+
+      <p><i>Additional tree coding</i> If you are aware of a published
+      phylogeny that will help resolve a clade you need for your
+      research, but which you do not have time or desire to transcribe
+      yourself, please feel free to request that we transcribe it for
+      you.  Thanks to funding from NESCent (see below), we have the
+      capacity to speed up the transcription process with assistants.
+      Please send a PDF of the paper containing the phylogeny, and an
+      indication of which figure you need transcribed,
+      to <a href="mailto:newick {AT} phylodiversity {DOT} net">newick
+      {AT} phylodiversity {DOT} net.</a>
+      </p>
+
+      <h2>Go to:</h2>
+      <ul>
+	<li>
+	  <a href="http://phylodiversity.net/phylomatic/phylomatic.html">Online (original) phylomatic</a>
+	</li>
+	<li>
+	  <a href="http://phylodiversity.net/phylomatic/phylomatic_old.html">Earlier background information page</a>
+	</li>
+      </ul>
+
+      <h2>Funding</h2>
+      <p>Original funds for Phylomatic came from a Donnelley
+      Fellowship of the <a href+"http:="" www.yale.edu="" yibs="" "="">Yale
+      Institute of Biospheric Studies</a>.  Subsequently, I have been
+      supported by the NSF (DEB-0212873), and am now gratefully
+      employed by
+      the <a href="http://www.arboretum.harvard.edu/">Arnold Arboretum
+      of Harvard University</a>.  A
+      recent <a href="http://www.nescent.org/">NESCent</a> working
+      group (co-sponsored by the ARC-NZ Research Network for
+      Vegetation Function), permitted CW and Peter Stevens to meet
+      and discuss APweb2.  A subsequent small grant from NESCent is
+      enabling the coding of phylogenies by a dedicated team of
+      Indonesians.</p>
+
+      <h2>Feedback</h2>
+      <p>Please let me know what you think of this new development. <a href="mailto:cwebb AT oeb.harvard.edu">Cam</a>.</p>
+
+    </div>
+  
+
+
+</body></html>

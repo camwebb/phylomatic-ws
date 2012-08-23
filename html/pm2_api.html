@@ -1,0 +1,45 @@
+
+<!-- saved from url=(0056)http://phylodiversity.net/phylomatic/phylomatic_api.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Phylomatic : API</title>
+ 		<link rel="stylesheet" type="text/css" href="../css/pm.css">
+	</head>
+	<body>
+		<div class="header"><h1>Phylomatic API</h1></div>
+		<div class="logo"><a href="http://www.phylodiversity.net/cwebb">
+				<img src="img/phylomatic.png" height="50" align="right" alt="Rafflesia" border="0">
+			</a>
+		</div>
+		<div class="main">
+			<p>
+				</p><h2>Sending</h2>
+				Phylomatic will accept either POST or GET, and one of the output format options is
+				XML.  So you can now use Phylomatic as a web service.  The format of
+				the GET string is:
+
+<pre style="font-size: 12pt;">http://phylodiversity.net/phylomatic/pm/phylomatic.cgi?format=xml&amp;bl=0&amp;tree=****
+</pre>
+				where format is `new' or `xml'; bl is 0 or 1 to set the branch lengths; and **** is the URL-encoded taxa block (`/' is %2F ; RETURN is %0D%0A). For example:
+
+<pre style="font-size: 12pt;">http://phylodiversity.net/phylomatic/pm/phylomatic.cgi?format=xml&amp;tree=annonaceae%2Fannona%2FAnnona_cherimola%0D%0Aannonaceae%2Fannona%2FAnnona_muricata
+</pre>
+				For large input lists, use a POST, since you may run up against a maximum URL length limitation.
+			<p></p>
+			<p>
+				Both wget and curl are excellent unix tools for retrieving data via HTTP.  E.g.,
+
+</p><pre style="font-size: 12pt;">curl "http://www.phylodiversity.net/phylomatic/pm/phylomatic.cgi?format=xml&amp;tree=annonaceae%2Fannona%2FAnnona_cherimola%0D%0Aannonaceae%2Fannona%2FAnnona_muricata" &gt; phylomatic_output.xml
+</pre>
+			<p></p>
+			<h2>Parsing the returned data</h2>
+			<p>
+			You can call plain text with the `format=new' option.  The XML is returned according to an evolving model for coding phylogeny metadata.  The schema (in RELAX NG Compact form) is <a href="http://svn.phylodiversity.net/tot/pmmd/pmmd.rnc">here</a>; it contains (minimal) comments.  A <a href="http://svn.phylodiversity.net/tot/pmmd/template.xml">template</a> is also available.</p>
+
+<p>Script on!
+</p>
+
+		</div>
+	
+
+
+ </body></html>

@@ -1,0 +1,105 @@
+BODY {
+    font-family: Times, serif;
+	background-color: white;  /* note difference if you use #3B8D15; */
+	font-size: 1.3em;
+}
+
+H1, H2, H3, H4 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+H1 { font-size: 1.5em }
+H2 { font-size: 1.2em }
+H3 { font-size: 1.0em }
+
+
+
+/* Use div.header to refer to <div class="header"> or
+       #header to refer to <div id="header"> */
+
+div.header {
+	padding-top: 0.2em;
+	padding-left: 4em;
+	padding-bottom: 0.5em;
+	color: #FFFFFF;
+	background-color: #0066CC;
+}
+
+div.main {
+	background-color: white;
+	color: black;
+	padding-top: 1em;
+	border-left: 2em solid #0066CC;
+	padding-left: 2em;
+/*	border-bottom: 0.5em solid #0066CC; */
+	padding-bottom: 1em;
+/*	border-right: 1em solid #0066CC; */
+	padding-right: 1em;
+}
+
+div.navbar {
+    font-family: Verdana, Arial, Helvetica, sans-serif;	
+    color: #FFFFFF;
+    position: absolute;
+    text-align: right;
+	font-size: 0.75em;
+    top: 2em;
+    right: 9em;
+    width: 9em 
+}
+
+div.navbar a {
+	color: #FFFFFF;
+	text-decoration:none;
+	border-bottom-style:none;
+}
+
+div.navbar a:hover {
+	color: #FFFFFF;
+	text-decoration:none;
+	border-bottom-style:solid;
+	border-bottom-width:thin;
+}
+
+
+div.logo {
+    position: absolute;
+    top: 1.5em;
+    right: 1.5em;
+    width: 9em 
+}
+
+div.figure {
+  float: right;
+/*  width: 25%; */
+  text-align: center;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+div.figure p {
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+}
+
+P UL OL {
+	font-family: Times, serif;
+	font-size: 1.3em;
+}
+
+a {
+	color:#15358D;
+	text-decoration:none;
+	border-bottom-style:none;
+}
+
+a:hover {
+	color:#15358D;
+	text-decoration:none;
+	border-bottom-style:solid;
+	border-bottom-width:thin;
+}
+

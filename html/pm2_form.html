@@ -1,0 +1,169 @@
+
+<!-- saved from url=(0052)http://phylodiversity.net/phylomatic/phylomatic.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Phylomatic</title>
+
+<!-- begin structure -->
+<style><!-- A{text-decoration:none} --></style>
+</head><body bgcolor="white" text="black" link="000099" vlink="000066">
+<table bgcolor="0066CC" width="100%" cellspacing="0" cellpadding="10" height="100"><tbody><tr><td width="30"></td><td width="10">
+</td><td align="LEFT" valign="MIDDLE">
+<!-- end structure -->
+
+<h1><font face="helvetica" color="white">Phylomatic</font></h1>
+
+<!-- begin structure -->
+</td><td align="RIGHT" valign="TOP" width="100">
+<a href="http://www.phylodiversity.net/phylomatic"><img src="img/phylomatic.png" height="70"></a></td>
+<td valign="TOP" width="80" align="LEFT"><font face="helvetica"><small>
+<a href="http://phylodiversity.net/phylomatic/phylomatic_old.html"><font color="white">details</font></a><br>
+<a href="http://www.phylodiversity.net/phylocom"><font color="white">phylocom</font></a><br>
+<a href="http://www.phylodiversity.net/cwebb"><font color="white">webb</font><br>
+</a><a href="http://www.phylodiversity.net/donoghue"><font color="white">donoghue</font><br>
+
+</a></small></font></td></tr>
+</tbody></table><table align="LEFT" width="95%" height="100%" cellspacing="0" cellpadding="10"><tbody><tr><td bgcolor="0066CC" valign="TOP" width="10"></td><td width="30"></td><td valign="TOP"><font size="+1"><br>
+<!-- end structure -->
+
+<h2>An online tool to assemble species lists into phylogenies</h2><p> (original details <a href="http://phylodiversity.net/phylomatic/phylomatic_old.html">here</a>)</p> 
+
+<h3>2009-11-10 changes</h3>
+<p>The base tree for online phylomatic is now a <a href="http://svn.phylodiversity.net/tot/megatrees/R20091110.new">APG3
+    derived megatree</a>. The base tree used for the past couple years
+    had not been updated, and it is time to sync the online phylomatic
+    with the phylomatic2 database.  However, this requires users
+    adopting some changes: i) I have restricted some of the options
+    available on this page, ii) The major change is that the
+    phylomatic2 database uses all lowercase names for taxa in the
+    database, and so your input trees must be all lowercase (for taxa
+    to be matched; the terminal name can still contain uppercase
+    chars).  A good editor will be able to `downcase' your input file
+    in a single action.  I apologize for this step if you have got
+    used to using this resource as is, but for a while I have been
+    urging users to switch to the desktop phylomatic (included in
+    phylocom) and the phylomatic2 database.  At least you will be able
+    to access an up-to-date tree this way. Note that the Davies tree
+    still uses uppercase first characters of taxon names.</p>
+
+<h4>API</h4>
+<p>Added a XML output
+option, and the ability to send requests as GET statements, so
+phylomatic can be used as a simple <a href="pm2_api.html">web service</a> now.</p>
+
+<form method="post" action="http://phylodiversity.net/phylomatic/pm/phylomatic.cgi">
+
+<p></p><h4>1. Paste your community list</h4>
+<ul>
+<li>Format (simple): Family/Genus/Genus_species RET</li>
+<li>A <a href="../eg/taxa_sample">sample</a> community is available to play with.</li>
+<li>This `/' delimited format allows the creation of unlimited user-defined structure (see <a href="../eg/taxa_sample2">sample</a>). The program reads the string from right to left, matching the taxon at the first position it can in i) the growing user-defined tree, or ii) the `megatree.'
+</li><li>No empty lines, and check the RETURN after the last character.</li>
+
+<!--
+<li>Several tools are available to construct a taxonomy consistent
+with phylomatic:
+<ul>
+<li>A <a href = "taxacheck.html">checker</A> against the <a
+href="pm/mega.r.new">master tree</a> in phylomatic
+[CRITICAL].</li>
+<li>A <A HREF="kewlookup.html">lookup</A> of genus names against a list at Kew, and the APweb
+family list (used in the master tree). (Base data old!)</li>
+<li>A <A HREF="apglookup.html">lookup</A> of family names against the APweb
+family list (used in the master tree). (Base data old!)</li>
+<li>A <A HREF="http://www.phylodiversity.net/cwebb/gen_agrep/">fuzzy lookup</A> of genus names against a list at Kew. (Base data old!)</li>
+< ! - - <li>A dynamic <A HREF="genuslookup.html">lookup</A> of genus names at Tropicos.</li> - - >
+
+</ul> -->
+</ul>
+<br>
+<textarea cols="60" rows="10" name="tree"></textarea>  <input type="reset" value="Clear the form">
+<p></p>
+
+<!-- <p><h4>2. Choose type terminal name in output</h4>
+<input type="radio" name="code" value="0" checked>"Genus_species" (no codes needed in 4th column)<br>
+<input type="radio" name="code" value="1">code (in 4th column)
+</p> -->
+
+<p></p><h4>2. Choose output format</h4>
+<input type="radio" name="format" value="new" checked="">Newick (including diagnostics)<br>
+<input type="radio" name="format" value="xml">XML (phylomatic meta data format)<br>
+<input type="radio" name="format" value="nex">Nexus<br>
+<input type="radio" name="format" value="bmp">Graphical output
+(JPG) - using drawgram from <a href="http://evolution.genetics.washington.edu/phylip.html">PHYLIP (v3.6)</a>.
+ And then ghostscript.<br>
+<!-- <input type="radio" name="format" value="node">Node-as-factor (space-delimited; for contrast tests)<br>
+<input type="radio" name="format" value="newI">Newick with interior
+node names<br>
+<input type="radio" name="format" value="newnode">Newick with nodes numbered<br>
+<input type="radio" name="format" value="nexnode">Nexus with nodes numbered
+<input type="radio" name="format" value="phy">.fy-format (for phyloCom; NB some browsers add empty lines at the top of the fy output - these must be stripped) -->
+<p></p>
+
+<input type="hidden" name="bl" value="0">
+<!--
+<p><h4>3. Choose (pseudo) branch lengths (in My)</h4>
+<input type="radio" name="bl" value="0" checked>No<br>
+<input type="radio" name="bl" value="1">Yes (obtained by running `phylocom bladj' on the megatree with ages from <A href="http://www.phylodiversity.net/bladj/#wikstrom01">Wikstrom et al. (2001)</a><br>
+</p>
+-->
+
+<p></p><h4>3. Choose the master phylogeny to use</h4>
+<input type="radio" name="resolve" value="r" checked="">Maximally
+resolved seed plant tree.  Please read about tree <a href="http://phylodiversity.net/phylomatic/phylomatic_old.html#rules">support and limitations.</a><br>
+<!-- <input type="radio" name="resolve" value="c">Conservative seed plant
+tree.  Please read about tree <A
+HREF="phylomatic_old.html#rules">support and limitations.</A><br> -->
+<input type="radio" name="resolve" value="d">Angiosperm consensus <a href="http://phylodiversity.net/phylomatic/davies.new">tree</a> from
+<a href="http://hdl.handle.net/10.1073/pnas.0308127100">
+Davies et al. (2004)</a> (Thanks, Jonathan!). See <a href="http://phylodiversity.net/phylomatic/phylomatic_old.html#davies">here</a> for info.<br>
+<!-- <input type="radio" name="resolve" value="tol"><a href="http://www.tolweb.org/tree/">Tree-of-life</a> tree. Thanks to the project for making their trees downloadable.<br> -->
+<!-- <input type="radio" name="resolve" value="u">User-supplied tree:
+(Newick) 
+<input type="text" name="userphy" size ="40"
+value="((Alpha,Beta)Alphaceae,(Gamma,Delta)Deltaceae);"><BR>
+
+<input type="radio" name="resolve" value="u2">User-supplied tree as
+URL:<input type="text" name="userurl" size ="40"
+value="http://www.phylodiversity.net/phylomatic/trees/R20070305.bl.new"> -->
+<p></p> 
+
+<!-- <p><h4>5. Choose the return method</h4>
+<input type="radio" name="return" value="web" checked>Returned to browser<br>
+<input type="radio" name="return" value="page"><a
+href="pm/data/phylomatic_output">Waiting page</a> (<b>Only</b> if
+a large job is causing the browser to
+time-out; will be overwritten on next phylomatic use).  -->
+
+<!-- <input type="text" name="email" size="20"> -->
+<p></p>
+
+<p></p><h4>4. Phylogenize!</h4>
+<input type="submit" value="Submit"> <!-- (Key:<input type="text" name="key" size ="4">) -->
+
+<p></p>
+
+<!-- <b>(Optional) Please enter any comments/special requests you have, including name and email:</b><br>
+<textarea cols="60" rows="5" name="Comments"></textarea><p> -->
+
+<!-- <p><br><h4>NOTE: the server processor is slow.  Please be patient (up to 30 seconds)!</h4>
+Then save result to a text file, and display with a tree drawing program
+(e.g. DRAWGRAM in <A
+HREF="http://evolution.genetics.washington.edu/phylip.html">PHYLIP</A>). 
+The Nexus file opens in <A
+HREF="http://macclade.org/macclade.html">MacClade</A> and <A HREF="http://paup.csit.fsu.edu">PAUP</A>.  Tip: to add branch lengths
+of 1.0 to all branches in a Newick file, replace (with an editor, e.g. <A HREF="http://www.barebones.com/products/bbedit/index.shtml">BBEdit</A>) ',' with
+':1.0,', and ')' with ':1.0)'.  The adjusted tree will open in <A HREF="http://evolve.zoo.ox.ac.uk/software/TreeEdit/main.html">TreeEdit</A>.
+</p> -->
+
+<p align="right"><br><img src="img/nsf.gif">
+<br>Partially funded by DEB-0212873
+</p>
+</form>
+
+
+<!-- begin structure -->
+<!-- <P ALIGN=RIGHT><FONT SIZE=-1>Last revised: $Date: 2007/06/09 15:26:40 $</FONT></P> -->
+</font></td></tr></tbody></table>
+<!-- end structure -->
+
+
+</body></html>
