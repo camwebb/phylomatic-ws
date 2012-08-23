@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:nodeID="Node14">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000026"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node3">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000026"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node3">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node14"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU0">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000138"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU0">
+    <ns0:label xmlns:ns0="http://www.w3.org/2000/01/rdf-schema#">raccoon</ns0:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node1">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000108"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node1">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node1">
+    <ns0:CDAO_0000187 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="TU0"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU1">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000138"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU1">
+    <ns0:label xmlns:ns0="http://www.w3.org/2000/01/rdf-schema#">bear</ns0:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node2">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000108"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node2">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node2">
+    <ns0:CDAO_0000187 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="TU1"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node12">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000026"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node12">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node14"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node6">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000026"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node6">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node12"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU2">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000138"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU2">
+    <ns0:label xmlns:ns0="http://www.w3.org/2000/01/rdf-schema#">sea_lion</ns0:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node4">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000108"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node4">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node4">
+    <ns0:CDAO_0000187 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="TU2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU3">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000138"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU3">
+    <ns0:label xmlns:ns0="http://www.w3.org/2000/01/rdf-schema#">seal</ns0:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node5">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000108"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node5">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node5">
+    <ns0:CDAO_0000187 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="TU3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node11">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000026"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node11">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node12"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node9">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000026"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node9">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU4">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000138"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU4">
+    <ns0:label xmlns:ns0="http://www.w3.org/2000/01/rdf-schema#">monkey</ns0:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node7">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000108"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node7">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node7">
+    <ns0:CDAO_0000187 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="TU4"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU5">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000138"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU5">
+    <ns0:label xmlns:ns0="http://www.w3.org/2000/01/rdf-schema#">cat</ns0:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node8">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000108"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node8">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node8">
+    <ns0:CDAO_0000187 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="TU5"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU6">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000138"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU6">
+    <ns0:label xmlns:ns0="http://www.w3.org/2000/01/rdf-schema#">weasel</ns0:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node10">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000108"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node10">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node10">
+    <ns0:CDAO_0000187 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="TU6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU7">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000138"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="TU7">
+    <ns0:label xmlns:ns0="http://www.w3.org/2000/01/rdf-schema#">dog</ns0:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node13">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000108"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node13">
+    <ns0:CDAO_0000179 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node14"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Node13">
+    <ns0:CDAO_0000187 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="TU7"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length0">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length0">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">0.84600</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge14v3">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge14v3">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge14v3">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node14"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge14v3">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length0"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length1">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length1">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">19.19959</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge3v1">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge3v1">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node1"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge3v1">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge3v1">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length1"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length2">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length2">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">6.80041</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge1v2">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge1v2">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge1v2">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node1"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge1v2">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length3">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length3">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">3.87382</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge2v12">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge2v12">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node12"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge2v12">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge2v12">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length4">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length4">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">7.52973</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge12v6">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge12v6">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge12v6">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node12"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge12v6">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length4"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length5">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length5">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">11.99700</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge6v4">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge6v4">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node4"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge6v4">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge6v4">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length5"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length6">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length6">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">12.00300</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge4v5">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge4v5">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node5"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge4v5">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node4"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge4v5">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length7">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length7">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">2.09460</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge5v11">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge5v11">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge5v11">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node5"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge5v11">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length7"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length8">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length8">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">20.59201</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge11v9">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge11v9">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge11v9">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge11v9">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length9">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length9">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">100.85930</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge9v7">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge9v7">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node7"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge9v7">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge9v7">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length10">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length10">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">47.14069</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge7v8">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge7v8">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge7v8">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node7"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge7v8">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length10"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length11">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length11">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">18.87953</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge8v10">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge8v10">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node10"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge8v10">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge8v10">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length12">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000046"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Length12">
+    <ns0:CDAO_0000215 xmlns:ns0="http://purl.obolibrary.org/obo/">25.46154</ns0:CDAO_0000215>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge10v13">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000139"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge10v13">
+    <ns0:CDAO_0000209 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node13"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge10v13">
+    <ns0:CDAO_0000201 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node10"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Edge10v13">
+    <ns0:CDAO_0000193 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Length12"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://phylotastic.nescent.org/trees/Treemytree3">
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/CDAO_0000012"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://phylotastic.nescent.org/trees/Treemytree3">
+    <ns0:CDAO_0000148 xmlns:ns0="http://purl.obolibrary.org/obo/" rdf:nodeID="Node14"/>
+  </rdf:Description>
+</rdf:RDF>

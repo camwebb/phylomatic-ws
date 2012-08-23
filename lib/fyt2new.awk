@@ -1,4 +1,4 @@
-function fyt2new(                   ) 
+function fyt2new(                 x , y, n, first , mark, tmp) 
 {
   # (c) 2011 Cam Webb
   # Distributed under (open source) BSD 2-clause licence
@@ -24,7 +24,11 @@ function fyt2new(                   )
       lDaughter[x] = "NULL";
       rSister[x] = "NULL";
       first[x] = 1;
+	  n++; 
     }
+
+  # special case of a single node:
+  if (n == 1) { print taxon[x] ";\n" ; return }
 
   for (x in parent)
     {

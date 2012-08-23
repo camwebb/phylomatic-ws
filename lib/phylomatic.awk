@@ -1,5 +1,5 @@
 function phylomatic(       ntaxatrees, taxa, newnode, i, nnodes, node, j, \
-						   matched, k, x,thisnode, totbl) 
+						   matched, k, x,thisnode, totbl, keep, divbl) 
 {
 
   if (hasBL) ageToRoot();
@@ -92,6 +92,8 @@ function phylomatic(       ntaxatrees, taxa, newnode, i, nnodes, node, j, \
 		}
 	}
 
+  if(!nmatched) error("No taxa in common");
+
   # AND PRUNE:
   for (i in parent)
 	{
@@ -166,10 +168,11 @@ function phylomatic(       ntaxatrees, taxa, newnode, i, nnodes, node, j, \
 	  delete parent["NULL"];
 	}
 
+
   # Missing taxa
   if (nmatched < ntaxatrees)
 	{
-	  warning = "\fNOTE: " ntaxatrees - nmatched " taxa not matched:\n";
+	  warning = "----\nNOTE: " ntaxatrees - nmatched " taxa not matched:\n";
 	  for (i = 1; i <= ntaxatrees; i++)
 		{
 		  if (!matched[i])
