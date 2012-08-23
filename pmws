@@ -45,8 +45,8 @@ BEGIN{
 	{
 	  split(query[i],tmpquery,"=");
 	  # test for size of tree
-	  if (length(tmpquery[2]) > 10000)
-		{ error("Trees over 10kB must be passed by URI") }  
+	  if (length(tmpquery[2]) > 100000)
+		{ error("Trees over 100kB must be passed by URI") }  
 	  f[tmpquery[1]] = decode(tmpquery[2]);
 	}
 
