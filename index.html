@@ -7,20 +7,19 @@
 	<!-- <link rel="stylesheet" type="text/css" href="xsl/xmalesia.css" /> -->
   </head>
   <body>
-	<div style="position:absolute;right:20px;top:20px">[ <a href="html/documentation.html">documentation</a> ]</div>
+	<div style="position:absolute;right:20px;top:20px">[ <a href="html/pm2_form.html">old version</a> | <a href="html/documentation.html">documentation</a> ]</div>
 	<h1>Phylomatic version 3</h1>
+	<p style="font-size:12px">
+	  This form sends data to the underlying
+	  web-service.  To call the service directly, either GET or POST
+	  (for sending large trees) the paramenters (named exactly as on
+	  this form) to
+	  <code>http://phylodiversity.net/phylomatic3/pmws</code>. This is a new tool, so <i>please</i> let me know if it is not working, or if you have comments (<a href="mailto:cwebb@oeb.harvard.edu">email</a>).  Thanks to the NESCent <a href="http://phylotastic.org">PhyloTastic!</a> project for support and encouragement for making this upgrade. 
+	</p>	  
 	<form method="post" action="pmws">
 	  <table>
 		<tr>
-		  <td colspan="2"><hr/></td>
-		  <td>&#160;</td>
-		</tr>
-		<tr>
-		  <td colspan="3" style="font-size:12px">This page offers a form to send data to the underlying web-service.  To call the service directly, either GET or POST (for sending large trees) the paramenters (named exactly as on this form) to <code>http://phylodiversity.net/phylomatic3/pmws</code> </td>
-		</tr>
-		<tr>
-		  <td colspan="2"><hr/></td>
-		  <td>&#160;</td>
+		  <td colspan="3"><hr/></td>
 		</tr>
 		<tr>
 		  <td><code>tree</code> =</td>
@@ -53,8 +52,9 @@
 		  <td>
 			<select name="storedtree">
 			  <option selected="selected" value=""></option>
-			  <option value="R20100701">R20100701</option>
-			  <option value="smith2011">smith2011</option>
+			  <option value="R20100701">Phylomatic tree R20100701 (plants)</option>
+			  <option value="smith2011">Smith 2011 (plants)</option>
+			  <option value="binindaemonds2007">Bininda-Emonds 2007 (mammals)</option>
 			</select>	
 		  </td>
 		  <td style="font-size:12px;">locally stored <a href="https://github.com/camwebb/tree-of-trees/tree/master/megatrees">tree-of-trees megatrees</a>, in newick format</td>
@@ -145,7 +145,7 @@
 			  <option value="fyt">fyt</option>
 			</select>	
 		  </td>
-		  <td>&#160;</td>
+		  <td style="font-size:12px;">... more to come!</td>
 		</tr>
 		<tr>
 		  <td colspan="2"><hr/></td>
