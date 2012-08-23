@@ -3,10 +3,163 @@
   <head>
 	<meta content="application/xhtml+xml; charset=utf-8" http-equiv="content-type"/>
 	<link rel="stylesheet" href="css/default.css" type="text/css" />
-	<title>Phylomatic version 3</title>
+	<title>Phylomatic (v3)</title>
+	<!-- <link rel="stylesheet" type="text/css" href="xsl/xmalesia.css" /> -->
   </head>
   <body>
 	<h1>Phylomatic version 3</h1>
-	<p>Visit the <a href="form.html">web form</a>. Documentation to follow.</p> 
+	<form method="post" action="pmws">
+	  <table>
+		<tr>
+		  <td colspan="2"><hr/></td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td colspan="3" style="font-size:12px">This page offers a form to send data to the underlying web-service.  To call the service directly, either GET or POST (for sending large trees) the paramenters (named exactly as on this form) to <code>http://phylodiversity.net/phylomatic3/pmws</code> </td>
+		</tr>
+		<tr>
+		  <td colspan="2"><hr/></td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td><code>tree</code> =</td>
+		  <td>
+			<textarea cols="50" rows="5" name="tree"></textarea>
+		  </td>
+		  <td style="font-size:12px;">Paste in your megatree here</td>
+		</tr>
+		<tr>
+		  <td>&#160;</td>
+
+		  <td><i>or</i></td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td><code>treeuri</code> =</td>
+		  <td>
+			<input name="treeuri" type="text" size="50"/>
+		  </td>
+		  <td style="font-size:12px;">URL of a tree online (&lt;20MB)</td>
+		</tr>
+		<tr>
+		  <td>&#160;</td>
+
+		  <td><i>or</i></td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td><code>storedtree</code>&#160;=</td>
+		  <td>
+			<select name="storedtree">
+			  <option selected="selected" value=""></option>
+			  <option value="R20100701">R20100701</option>
+			  <option value="smith2011">smith2011</option>
+			</select>	
+		  </td>
+		  <td style="font-size:12px;">locally stored <a href="https://github.com/camwebb/tree-of-trees/tree/master/megatrees">tree-of-trees megatrees</a>, in newick format</td>
+		</tr>
+		<tr>
+		  <td><code>informat</code> =</td>
+		  <td>
+			<select name="informat">
+			  <option value="newick" selected="selected">newick</option>
+			  <option value="nexml">nexml</option>
+			  <option value="cdaordf">cdaordf</option>
+			</select>	
+		  </td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td colspan="2"><hr/></td>
+		  <td>&#160;</td>
+		</tr>
+
+		<tr>
+		  <td><code>method</code> =</td>
+		  <td>
+			<input type="radio" name="method" value="convert"/>
+			<code>convert</code>
+		  </td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td colspan="2"><hr/></td>
+		  <td>&#160;</td>
+		</tr>
+
+		<tr>
+		  <td><code>method</code> =</td>
+		  <td>
+			<input type="radio" name="method" value="phylomatic" />
+			<code>phylomatic</code>
+		  </td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td><code>taxa</code> =</td>
+		  <td>
+			<textarea cols="50" rows="5" name="taxa"></textarea>
+		  </td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td>&#160;</td>
+
+		  <td><i>or</i></td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td><code>taxauri</code> =</td>
+		  <td>
+			<input name="taxauri" type="text" size="50"/>
+		  </td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td><code>taxaformat</code> =</td>
+		  <td>
+			<select name="taxaformat">
+			  <option value="slashpath" selected="selected">slashpath</option>
+			</select>	
+		  </td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td><code>clean</code> =</td>
+		  <td>
+			<input type="checkbox" name="clean" value="true"/> <code>true</code>
+		  </td>
+		  <td>&#160;</td>
+		</tr>
+
+		<tr>
+		  <td colspan="2"><hr/></td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td><code>outformat</code> =</td>
+		  <td>
+			<select name="outformat">
+			  <option value="newick" selected="selected">newick</option>
+			  <option value="fyt">fyt</option>
+			</select>	
+		  </td>
+		  <td>&#160;</td>
+		</tr>
+		<tr>
+		  <td colspan="2"><hr/></td>
+		  <td>&#160;</td>
+		</tr>
+			
+		<tr>
+		  <td>&#160;</td>
+		  <td>
+			<input type="reset" value="Reset"/>
+			<input type="submit" value="Send"/>
+		  </td>
+		  <td>&#160;</td>
+		</tr>
+	  </table>
+	</form>
   </body>
 </html>
