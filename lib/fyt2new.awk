@@ -65,7 +65,7 @@ function fyt2new(                   )
   tmp = "";
   printf("%s;\n", downPar(root, tmp));
 
-  exit;
+  # exit;
   
 }
 

@@ -31,8 +31,15 @@ function readfyt( results ,        nrow, r, row, c )
 
 }
 
-function printfyt()
+function printfyt(     n, i, sortidx)
 {
   OFS="\t";
-  for (i in parent) print i, parent[i], bl[i], taxon[i] "\n";
+  # sort the index
+  n = asorti(parent, sortidx)
+  for (i = 1; i <= n; i++) 
+	{
+	  print sortidx[i], parent[sortidx[i]], \
+		bl[sortidx[i]], taxon[sortidx[i]], "\n";
+	}
 }
+

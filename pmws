@@ -162,8 +162,13 @@ BEGIN{
 	  print "Content-type: text/plain\n\n";
 	  if (f["outformat"] == "newick") fyt2new();
 	  else if (f["outformat"] == "fyt") printfyt();
+
+	  # output any warnings
+	  if (warning) print warning;
 	  
 #	}
+
+	  exit;
   
 }
 
