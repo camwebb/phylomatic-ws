@@ -1,6 +1,12 @@
 phylomatic-ws
 =============
 
+Links
+-----
+
+ * TNRS [API](http://api.phylotastic.org/tnrs)
+
+
 Improved web service for phylomatic
 
 Internal phylogeny representation
