@@ -44,7 +44,7 @@ function fyt2nexml(     i, n, nd, e, ed, t, tx, root, ndtx, leng)
 	  if (hasBL) 
 		{
 		  # float or int
-		  if (bl[i] = int(bl[i])) leng = " length=\"" bl[i] ".0\"" ;
+		  if (bl[i] == int(bl[i])) leng = " length=\"" bl[i] ".0\"" ;
 		  else leng = " length=\"" bl[i] "\"" ;
 		}
 	  else leng = "";
