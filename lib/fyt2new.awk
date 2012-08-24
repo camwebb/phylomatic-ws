@@ -28,7 +28,7 @@ function fyt2new(                 x , y, n, first , mark, tmp)
     }
 
   # special case of a single node:
-  if (n == 1) { print taxon[x] ";\n" ; return }
+  if (n == 1) { print "Content-type: text/plain\n\n" taxon[x] ";\n" ; return }
 
   for (x in parent)
     {
@@ -67,7 +67,13 @@ function fyt2new(                 x , y, n, first , mark, tmp)
   # Recurse through levels
 
   tmp = "";
-  printf("%s;\n", downPar(root, tmp));
+  if (warning) 
+	{
+	  warning = "[" warning "]";
+	}
+
+  print "Content-type: text/plain\n\n";
+  printf("%s%s;\n", downPar(root, tmp), warning);
 
   # exit;
   

@@ -1,5 +1,5 @@
 function phylomatic(       ntaxatrees, taxa, newnode, i, nnodes, node, j, \
-						   matched, k, x,thisnode, totbl, keep, divbl) 
+						   matched, k, x,thisnode, totbl, keep, divbl, endbit) 
 {
 
   if (hasBL) ageToRoot();
@@ -173,12 +173,21 @@ function phylomatic(       ntaxatrees, taxa, newnode, i, nnodes, node, j, \
   # Missing taxa
   if (nmatched < ntaxatrees)
 	{
-	  warning = "----\nNOTE: " ntaxatrees - nmatched " taxa not matched:\n";
+	  if (f["outformat"] == "fyt") 
+		{
+		  warning = "----\nNOTE: " ntaxatrees - nmatched " taxa not matched:\n";
+		  endbit = "\n";
+		}
+	  else 
+		{
+		  warning = "NOTE: " ntaxatrees - nmatched " taxa not matched: ";
+		  endbit = ", ";
+		}
 	  for (i = 1; i <= ntaxatrees; i++)
 		{
 		  if (!matched[i])
 			{
-			  warning = warning taxa[i] "\n";
+			  warning = warning taxa[i] endbit;
 			}
 		}
 	}

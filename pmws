@@ -14,6 +14,7 @@
 @include "lib/readfyt.awk"
 @include "lib/utils.awk"
 @include "lib/new2fyt.awk"
+@include "lib/fyt2nexml.awk"
 @include "lib/phylomatic.awk"
 
 # This script is the main controller
@@ -64,6 +65,9 @@ BEGIN{
   if ((f["informat"] != "newick") && (f["informat"] != "nexml") &&	\
 	  (f["informat"] != "cdaordf"))
 	{ error("informat must be either newick, nexml or cdaordf") }
+  if ((f["outformat"] != "newick") && (f["outformat"] != "nexml") &&	\
+	  (f["outformat"] != "fyt"))
+	{ error("outformat must be either newick, nexml or fyt") }
 
   # BEGIN controller
 
@@ -156,15 +160,15 @@ BEGIN{
 	  # print decode(results);
 	}
 
-  # FORMAT CONVERSIONS
-  #else if (f["method"] == "convert")
-#	{
-	  print "Content-type: text/plain\n\n";
-	  if (f["outformat"] == "newick") fyt2new();
-	  else if (f["outformat"] == "fyt") printfyt();
+  # OUTPUT in requested format
 
-	  # output any warnings
-	  if (warning) print warning;
+  # print "Content-type: text/plain\n\n";
+  if (f["outformat"] == "newick") fyt2new();
+  else if (f["outformat"] == "fyt") printfyt();
+  else if (f["outformat"] == "nexml") fyt2nexml();
+  
+  # output any warnings
+  # if (warning) print warning;
 	  
 #	}
 

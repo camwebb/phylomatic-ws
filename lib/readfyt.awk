@@ -36,10 +36,12 @@ function printfyt(     n, i, sortidx)
   OFS="\t";
   # sort the index
   n = asorti(parent, sortidx)
+  print "Content-type: text/plain\n\n";
   for (i = 1; i <= n; i++) 
 	{
 	  print sortidx[i], parent[sortidx[i]], \
 		bl[sortidx[i]], taxon[sortidx[i]], "\n";
 	}
+  if (warning) print warning "\n";
 }
 

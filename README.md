@@ -66,3 +66,10 @@ Here are some possible input URIs:
 	    diversity.net/phylomatic/eg/tree1.cdao.rdf&informat=cdaordf&
 		method=convert&outformat=newick
 
+To Do
+-----
+
+ * Send/receive compression with gzip
+ * Graft in whole trees
+ * More ouput formats
+ * Add jsPhyloSVG viewer 
