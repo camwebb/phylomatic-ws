@@ -79,6 +79,8 @@ BEGIN{
 	  RS = "\x04";
 	  cmd | getline f["tree"] ;
 	  close(cmd);
+	  if ((!f["tree"]) ||												\
+		  (f["tree"] ~ "404 Not Found")) error("URI appears to be invalid");
 	}
   
   else if (f["storedtree"])
