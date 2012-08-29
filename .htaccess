@@ -3,3 +3,5 @@ Options +ExecCGI -Indexes
 <Files pmws>
   SetHandler cgi-script
 </Files>
+
+# SetEnvIfNoCase Accept-Encoding ".*gzip.*" GZIP_ACCEPT

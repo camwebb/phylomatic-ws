@@ -76,7 +76,7 @@ function fyt2new(                 x , y, n, first , mark, tmp)
   printf("%s%s;\n", downPar(root, tmp), warning);
 
   # exit;
-  
+  return;
 }
 
 function downPar(atn, tmp,           x, which, tmpnext )

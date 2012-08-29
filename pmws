@@ -172,9 +172,12 @@ BEGIN{
   # output any warnings
   # if (warning) print warning;
 	  
-#	}
+  #	}
 
-	  exit;
+  # for (i in ENVIRON) print i " : " ENVIRON[i] "\n";
+  # if (ENVIRON["HTTP_ACCEPT_ENCODING"] ~ gzip) ....
+
+  exit;
   
 }
 
