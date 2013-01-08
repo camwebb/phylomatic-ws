@@ -14,6 +14,37 @@
 		<a href="https://github.com/camwebb/phylomatic-ws">at github</a>
 	  </li>
 	</ul>
+    <h3>Sending data with <code>curl</code></h3>
+    <p>
+      <code>curl</code> is a handy command line tool for interacting
+      with websites.  You can send the data from a web-form back to
+      the server from <code>curl</code>, if you know the
+      parameters. The easiest way to use this to send data to
+      phylomatic is first to create a text file (e.g.,
+      <code>phylomatic.dat</code>) with the parameter data:
+    </p>
+    <pre>
+      storedtree=R20120829&amp;informat=newick&amp;method=phylomatic&amp;
+      taxaformat=slashpath&amp;outformat=newick&amp;
+      taxa=acanthaceae%2Fbravaisia%2Fbravaisia_sp1%0D
+      acanthaceae%2Fsuessenguthia%2Fsuessenguthia_sp1%0D
+      ...
+      %0D
+    </pre>
+    <p>
+      Note that there should be no line-breaks in your input file. The
+      whole thing should be one long string of text. The
+      <code>%2F</code> and <code>%0D</code> symbols are URL-encoded
+      slashes and newline characters, respectively.  Then just send
+      the data to te server with:
+    </p>
+    <pre>
+      $ curl -d @phylomatic.dat http://phylodiversity.net/phylomatic/pmws > output.new
+    </pre>
+    <p>
+      (The <code>&gt; output.new</code> redirects the output to a
+      file)
+    </p>
 	<h3>Acknowledgements</h3>
 	<ul>
 	  <li>
