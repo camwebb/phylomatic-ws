@@ -55,13 +55,15 @@ BEGIN{
 
   if ((!f["tree"]) && (!f["treeuri"]) && (!f["storedtree"])) 
 	{ error("either tree or treeuri or storedtree must be given") }
+  if ((!f["taxa"]) && (!f["taxauri"]))
+	{ error("either taxa or taxauri must be given") }
   if (length( substr(f["tree"],1,1) substr(f["treeuri"],1,1) \
 			  substr(f["storedtree"],1,1)) > 1) 
 	{ error("either tree OR treeuri OR storedtree must be given") }
   if ((f["method"] != "phylomatic") && (f["method"] != "convert"))
 	{ error("method of phylomatic or convert must be given") }
-  if ((f["method"] == "phylomatic") && (!f["taxa"]))
-	{ error("if method=phylomatic, taxa must be given") }
+  if ((f["method"] == "phylomatic") && (!f["taxa"]) && (!f["taxauri"]))
+	{ error("if method=phylomatic, taxa or taxauri must be given") }
   if ((f["informat"] != "newick") && (f["informat"] != "nexml") &&	\
 	  (f["informat"] != "cdaordf"))
 	{ error("informat must be either newick, nexml or cdaordf") }
@@ -91,7 +93,19 @@ BEGIN{
 	  close("data/" f["storedtree"] ".new");
 	}
 
-  # 2. CONVERT TO internal phylo structure
+  # 2. TAXA list via URI TO MEMORY:
+
+  if(f["taxauri"])
+	{
+	  cmd = "curl --max-filesize 5000000 -s \"" f["taxauri"] "\"";
+	  RS = "\x04";
+	  cmd | getline f["taxa"] ;
+	  close(cmd);
+	  if ((!f["taxa"]) ||												\
+		  (f["taxa"] ~ "404 Not Found")) error("URI appears to be invalid");
+	}
+
+  # 3. CONVERT TO internal phylo structure
 
   if (f["informat"] == "newick")
 	{
