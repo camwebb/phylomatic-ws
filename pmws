@@ -55,8 +55,6 @@ BEGIN{
 
   if ((!f["tree"]) && (!f["treeuri"]) && (!f["storedtree"])) 
 	{ error("either tree or treeuri or storedtree must be given") }
-  if ((!f["taxa"]) && (!f["taxauri"]))
-	{ error("either taxa or taxauri must be given") }
   if (length( substr(f["tree"],1,1) substr(f["treeuri"],1,1) \
 			  substr(f["storedtree"],1,1)) > 1) 
 	{ error("either tree OR treeuri OR storedtree must be given") }
