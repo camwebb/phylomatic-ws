@@ -8,7 +8,9 @@ function phylomatic(       ntaxatrees, taxa, newnode, i, nnodes, node, j, \
 
   # for each taxon in the `taxa` file
   # parse taxa
-  gsub(/\n\n*$/,"",f["taxa"]);
+  gsub(/\r\n/,"\n",f["taxa"]); # fix windows
+  gsub(/\r/,"\n",f["taxa"]); # fix mac
+  gsub(/\n\n*$/,"",f["taxa"]); # clean empty newlines at end
   gsub(/[\ \t]/,"",f["taxa"]); # important - tabs were causing hangs
   ntaxatrees = split(f["taxa"], taxa, "\n");
   newnode = 1;
