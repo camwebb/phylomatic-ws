@@ -1,7 +1,6 @@
 function phylomatic(       ntaxatrees, taxa, newnode, i, nnodes, node, j, \
 						   matched, k, x,thisnode, totbl, keep, divbl, endbit) 
 {
-
   if (hasBL) ageToRoot();
 
   # GRAFT:
@@ -13,6 +12,9 @@ function phylomatic(       ntaxatrees, taxa, newnode, i, nnodes, node, j, \
   gsub(/\n\n*$/,"",f["taxa"]); # clean empty newlines at end
   gsub(/[\ \t]/,"",f["taxa"]); # important - tabs were causing hangs
   ntaxatrees = split(f["taxa"], taxa, "\n");
+  # check for size (above ~5000 taxa causes gateway timeout)
+  if (ntaxatrees > 5000) error("More than 5000 taxa (too big). Sorry, please use an offline version of phylomatic.");
+
   newnode = 1;
 
   for (i = 1; i <= ntaxatrees; i++)
