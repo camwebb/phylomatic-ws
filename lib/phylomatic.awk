@@ -13,7 +13,7 @@ function phylomatic(       ntaxatrees, taxa, newnode, i, nnodes, node, j, \
   gsub(/[\ \t]/,"",f["taxa"]); # important - tabs were causing hangs
   ntaxatrees = split(f["taxa"], taxa, "\n");
   # check for size (above ~5000 taxa causes gateway timeout)
-  if (ntaxatrees > 5000) error("More than 5000 taxa (too big). Sorry, please use an offline version of phylomatic.");
+  if (ntaxatrees > 5000) error("More than 5000 taxa (too big). Sorry, please use an offline version of phylomatic (see documentation).");
 
   newnode = 1;
 

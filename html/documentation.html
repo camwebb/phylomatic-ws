@@ -45,6 +45,30 @@
       (The <code>&gt; output.new</code> redirects the output to a
       file)
     </p>
+    <h3>Too many taxa for this online version of phylomatic?</h3>
+    <p>If you have more than about 5,000 taxa, a job on this server
+    will take too long and the gateway will timeout. A limit of 5,000
+    taxa has now been placed on a taxa file. You have two
+    alternatives:</p>
+    <ol>
+      <li>Use the desktop version of <tt>phylomatic</tt>, available
+      with <tt>phylocom</tt>, or</li>
+      <li>Use this (<tt>gawk</tt>-powered) version of
+      <tt>phylomatic</tt> on your own computer:
+      <ol>
+        <li>Aquire the files from <a
+        href="https://github.com/camwebb/phylomatic-ws">github</a>.</li>
+        <li>Make sure the first line of the <tt>pmws</tt> file points
+        to your <tt>gawk</tt> (version >= 4.0) executable.</li>
+        <li>Run with (for example):</li>
+      </ol>
+      </li>
+    </ol>
+    <pre>
+      $ echo "informat=newick&amp;storedtree=R20120829&amp;method=phylomatic&amp;taxauri=http://foo.com/bar.new&amp;outformat=newick" \
+        | path/to/pmws > out.new
+    </pre>
+ 
 	<h3>Acknowledgements</h3>
 	<ul>
 	  <li>
