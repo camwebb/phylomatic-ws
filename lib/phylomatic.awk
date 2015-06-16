@@ -19,6 +19,7 @@ function phylomatic(       ntaxatrees, taxa, newnode, i, nnodes, node, j, \
 
   for (i = 1; i <= ntaxatrees; i++)
     {
+      delete node;
 	  # parse slashes
 	  nnodes = split(taxa[i], nodetmp, "/");
 	  # reverse the indices, so 1 is the terminal one
