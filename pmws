@@ -46,7 +46,7 @@ BEGIN{
 	{
 	  split(query[i],tmpquery,"=");
 	  # test for size of tree ### DISABLE IF RUNNING LOCALLY ###
-	  if (length(tmpquery[2]) > 200000)
+	  if ((length(tmpquery[2]) > 200000) && (!f["local"]))
 		{ error("Trees/taxa lists over 200kB must be passed by URI") }  
 	  f[tmpquery[1]] = decode(tmpquery[2]);
 	}
