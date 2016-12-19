@@ -7,7 +7,7 @@
 ## http://www.opensource.org/licenses/bsd-license.php
 ## Copyright (c) 2012, Campbell Webb <cwebb@oeb.harvard.edu>
 
-# (requires gawk4 installed at /usr/local/bin)
+# (requires gawk4 as a symlink from ./gawk)
 
 @include "lib/fyt2new.awk"
 @include "lib/cdao2fyt.awk"
