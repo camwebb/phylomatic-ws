@@ -1,4 +1,4 @@
-#!/usr/local/bin/gawk -f
+#!./gawk -f
 
 ## Webservice for phylomatic 
 
