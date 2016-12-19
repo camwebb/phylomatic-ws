@@ -128,7 +128,8 @@ BEGIN{
 
   else if (f["informat"] == "nexml")
 	{
-	  cmd = XGAWK " -f lib/nexml2fyt.awk" ;
+      ## using this same symlink to gawk4
+	  cmd = "./gawk -f lib/nexml2fyt.awk" ;
 	  print f["tree"] |& cmd ;
 	  close(cmd, "to");
 	  RS = "\x04";

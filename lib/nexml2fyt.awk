@@ -1,5 +1,7 @@
 
-@load xml
+@load "xml.so"
+
+## ! there needs to be a symlink in this directory to the xml lib
 
 # As function:
 # XMLMODE = 0

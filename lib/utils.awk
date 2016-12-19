@@ -6,12 +6,12 @@ function error( msg ) {
 
 function findexecs(          which) {
 
-  # test for phylomatic in path
-  RS = "\n";
-  "which phylomatic" | getline which;
-  if ( which ~ /phylomatic/) PM = "phylomatic" ;
-  else PM = "bin/phylomatic" ; # need symlink in same dir
-  close("which phylomatic");
+  # # test for phylomatic in path
+  # RS = "\n";
+  # "which phylomatic" | getline which;
+  # if ( which ~ /phylomatic/) PM = "phylomatic" ;
+  # else PM = "bin/phylomatic" ; # need symlink in same dir
+  # close("which phylomatic");
 
   # rapper
   RS = "\n";
@@ -20,12 +20,13 @@ function findexecs(          which) {
   else RAPPER = "bin/rapper" ; # need symlink in same dir
   close("which rapper");
 
-  # xgawk
-  RS = "\n";
-  "which xgawk" | getline which;
-  if ( which ~ /xgawk/) XGAWK = "xgawk" ;
-  else XGAWK = "bin/xgawk" ; # need symlink in same dir
-  close("which xgawk");
+  # Superceded by new gawk extensions
+  # # xgawk
+  # RS = "\n";
+  # "which xgawk" | getline which;
+  # if ( which ~ /xgawk/) XGAWK = "xgawk" ;
+  # else XGAWK = "bin/xgawk" ; # need symlink in same dir
+  # close("which xgawk");
 }
 
 # decode urlencoded string
