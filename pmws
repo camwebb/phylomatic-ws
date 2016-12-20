@@ -100,7 +100,7 @@ BEGIN{
 
   if(f["taxauri"])
 	{
-	  cmd = "curl --max-filesize 5000000 -s \"" f["taxauri"] "\"";
+	  cmd = "curl -L --max-filesize 5000000 -s \"" f["taxauri"] "\"";
 	  RS = "\x04";
 	  cmd | getline f["taxa"] ;
 	  close(cmd);
