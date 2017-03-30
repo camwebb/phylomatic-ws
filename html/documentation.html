@@ -36,7 +36,7 @@
       whole thing should be one long string of text. The
       <code>%2F</code> and <code>%0D</code> symbols are URL-encoded
       slashes and newline characters, respectively.  Then just send
-      the data to te server with:
+      the data to the server with:
     </p>
     <pre>
       $ curl -d @phylomatic.dat http://phylodiversity.net/phylomatic/pmws > output.new
@@ -56,7 +56,7 @@
       <li>Use this (<tt>gawk</tt>-powered) version of
       <tt>phylomatic</tt> on your own computer:
       <ol>
-        <li>Aquire the files from <a
+        <li>Acquire the files from <a
         href="https://github.com/camwebb/phylomatic-ws">github</a>.</li>
         <li>Make sure the first line of the <tt>pmws</tt> file points
         to your <tt>gawk</tt> (version >= 4.0) executable.</li>
@@ -65,11 +65,72 @@
       </li>
     </ol>
     <pre>
-      $ echo "informat=newick&amp;storedtree=R20120829&amp;method=phylomatic&amp;taxauri=http://foo.com/bar.new&amp;outformat=newick&amp;local=1" \
+      $ echo "informat=newick&amp;storedtree=R20120829&amp;method=phylomatic&amp;taxauri=http://phylodiversity.net/phylomatic/eg/taxa_sample&amp;outformat=newick&amp;local=1" \
         | path/to/pmws > out.new
     </pre>
     <p>(Note the <tt>local=1</tt> switch!)</p>
- 	<h3>Acknowledgements</h3>
+    <h3>Too many taxa for this online version of phylomatic?
+    (<b>Windows!</b>)</h3>
+    <p>(2017-03-30) It seems people are needing to process more and
+    more taxa, and the online phylomatic is insufficient for many
+    users. Here is a more detailed HOWTO for running phylomatic
+    locally on Windows. Please note, this solution is an ugly kludge
+    (the software is written to work in a UNIX
+    web-service framework, not a Windows desktop!), but it seems to work </p>
+    <ol>
+      <li>Visit <a
+      href="https://github.com/camwebb/phylomatic-ws">github</a> and
+      download the ZIP file for phylomatic (click on Clone or Download
+      on the right). Unzip it somewhere.
+      </li>
+      <li>Get <tt>gawk</tt> (<b>version 4.0 or greater</b>) from <a
+      href="http://www.klabaster.com/freeware.htm">here</a>, and
+      <tt>cURL</tt> from <a
+      href="https://curl.haxx.se/download.html">here</a> (choose Win32
+      generic). Unzip the files and locate <tt>gawk.exe</tt> and
+      <tt>curl.exe</tt> and copy them into the top directory of the
+      phylomatic bundle, the same directory that has <tt>pmws</tt> in
+      it.</li>
+      <li>Create a plain text file with your commands in it. Use a
+      plain text editor (Notepad++, or even just Notepad). Call it,
+      e.g., <tt>commands.txt</tt>. Here is an example:
+      <pre>
+        informat=newick&amp;storedtree=R20120829&amp;method=phylomatic
+        &amp;taxauri=http://phylodiversity.net/phylomatic/eg/taxa_sample
+        &amp;outformat=newick&amp;local=1&amp;clean=true
+      </pre>
+      There should be no breaks in the string (unlike the example
+      above).  What this command does is pass the same arguments from
+      the <a href="../index.html">phylomatic web form</a> to the
+      program, so see that page if you are unsure of the meaning of
+      the arguments.
+      </li>
+      <li>Find the <b>Command Prompt</b> on you Windows system (e.g.,
+      see <a
+      href="https://www.lifewire.com/how-to-open-command-prompt-2618089">here</a>). Try
+      searching for <tt>CMD.EXE</tt>. Open it, and navigate to the
+      phylomatic directory, using <tt>CD</tt>.  To be sure you are
+      there, type <tt>DIR</tt>, and you should see <tt>pmws</tt>,
+      <tt>commands.txt</tt>, <tt>gawk.exe</tt> and <tt>curl.exe</tt>.
+      </li>
+      <li>Now to run phylomatic. Use the above <tt>commands.txt</tt> example first, to be sure your setup is working. In the Command Prompt, type:
+      <pre>
+        TYPE command.txt | gawk -f pmws
+      </pre>
+      You will see some errors ("Can't recognize...", etc.), but you should see a Newick tree appear at the bottom. Success!
+      </li>
+       <li>Once you are sure all is working, use the URL of your
+       online taxa list (<tt>taxauri=http://...</tt>) and the URL of
+       your framework tree (<tt>treeuri=</tt>) if not using a builtin
+       tree. You should redirect the output to a file:
+      <pre>
+        TYPE command.txt | gawk -f pmws > mytree.new
+      </pre>
+      Hit Enter, and go have a cup of tea (or many!). Large taxa lists
+       will take an hour or more to run. Hope this works for you.</li>
+    </ol>
+
+ 	<h3>Acknowledgments</h3>
 	<ul>
 	  <li>
 		Thanks to the <a href="http://phylotastic.org">Phylotastic</a> working group at NESCent, and the sponsors of the meeting.
