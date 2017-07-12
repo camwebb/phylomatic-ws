@@ -69,10 +69,10 @@ BEGIN{
 	  (f["outformat"] != "fyt"))
 	{ error("outformat must be either newick, nexml or fyt") }
 
-  # added for Ferry - to be removed removed:
-  if ((f["method"] == "convert") && (f["storedtree"] == "slik2015")) {
-    error("Sorry, the Slik 2015 tree is not for public access yet.")
-  }
+#  # added for Ferry - to be removed removed:
+#  if ((f["method"] == "convert") && (f["storedtree"] == "slik2015")) {
+#    error("Sorry, the Slik 2015 tree is not for public access yet.")
+#  }
   
   # BEGIN controller
 
