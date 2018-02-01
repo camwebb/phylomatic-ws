@@ -4,4 +4,9 @@ Options +ExecCGI -Indexes
   SetHandler cgi-script
 </Files>
 
+<Files gawk>
+  Order Deny,Allow      
+  Deny from all         
+</Files>
+
 # SetEnvIfNoCase Accept-Encoding ".*gzip.*" GZIP_ACCEPT
