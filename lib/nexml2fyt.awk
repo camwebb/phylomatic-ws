@@ -1,5 +1,5 @@
 
-@load "xml.so"
+@load "./xml.so"
 
 ## ! there needs to be a symlink in this directory to the xml lib
 
