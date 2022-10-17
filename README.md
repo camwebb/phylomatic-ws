@@ -1,6 +1,12 @@
 phylomatic-ws
 =============
 
+_**IMPORTANT: as of mid-2022, the phylodiversity.net website, and the
+online phylomatic, is NOT UNDER MY CONTROL. An unknown person has
+(legitimately) bought the phylodiversity.net domain, and is
+illegitimately hosting old, depreciate web pages at the site. There is
+nothing I can do to fix this.**_
+
 Links
 -----
 
